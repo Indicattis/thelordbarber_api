@@ -47,7 +47,7 @@ export default function DashboardCalendario(props: DCalendarioProps) {
       
     useEffect(() => {
         fetchAgendamentos(currentDate.month() + 1);
-      }, []);
+      }, [fetchAgendamentos]);
 
 
 

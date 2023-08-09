@@ -50,7 +50,7 @@ export default function AgendamentosCliente(props: AgendamentosClienteProps) {
 
       useEffect(() => {
           fetchData()
-      },[props.clientePhone])
+      },[])
 
     async function deleteHorario(receivedHorarioId: number) {
         processInit()

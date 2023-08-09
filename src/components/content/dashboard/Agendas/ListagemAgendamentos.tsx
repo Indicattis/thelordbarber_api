@@ -47,7 +47,7 @@ export default function ListagemAgendamentos(props: ListagemAgendamentosProps) {
         };
 
         calculateTotalValue();
-    }, [data, deleteHorario]);
+    }, [data]);
 
     async function deleteHorario(receivedHorarioId: number) {
         try {

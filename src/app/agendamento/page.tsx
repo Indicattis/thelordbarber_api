@@ -128,7 +128,7 @@ export default function Agendamento() {
                     <div className="w-full">
                         <Image src="/img/Logo.jpeg" alt="" className="border-b" width={200} height={200}/>
                     </div>
-                    <div className='text-white flex flex-col items-center justify-center h-[50px]'>
+                    <div className='text-white flex flex-col items-center justify-center h-[50px] font-senthir'>
                         <h1>
                             {state == 1 ? "barbeiros!" : ""}
                             {state == 2 ? "Cortes" : ""}

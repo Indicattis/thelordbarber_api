@@ -83,7 +83,7 @@ export default function Barbeiro({ setBarber }: Props) {
                         <div className="text-zinc-800 font-poppins">
                             {barbeiro.cargo}
                         </div>
-                        <div className="">
+                        <div className="font-senthir">
                             {barbeiro.nome}
                         </div>
                         <div className="text-zinc-800">

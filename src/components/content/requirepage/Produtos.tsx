@@ -87,7 +87,7 @@ function Produto(props: ProdutoProps) {
                 {product.type == "sobrancelha" ? <IconBlade/> : ""}
                 {product.type == "combo" ? <IconGift/> : ""}
                 <div className="flex items-center justify-center">
-                    <div className={`transition-all
+                    <div className={`transition-all font-senthir
                     ${selected ? "text-[#db9b33]" : "text-white"}`}>
                         {product.name}
                     </div>
