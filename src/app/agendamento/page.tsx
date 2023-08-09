@@ -50,7 +50,7 @@ export default function Agendamento() {
               setUser(tokenInfo.phone)
               setUserId(tokenInfo.id)
               setState(1)
-            }
+            } 
         }
         finally {
 
