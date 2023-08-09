@@ -1,6 +1,5 @@
 'use client'
 
-import { Case, Container, Main } from "@/app/page";
 import HorariosUsuario from "@/components/content/userpage/HorariosUsuario";
 import UserConfig from "@/components/content/userpage/UsuarioConfig";
 import UserInsights from "@/components/content/userpage/UsuarioInsights";
@@ -45,21 +44,25 @@ export default function Usuario() {
 
 
     return (
-        <Main>
+        <main>
             <Header></Header>
-            <Container>
-                <Case>
+            <section className="flex w-4/5 gap-10 relative z-0 mt-10
+        max-md:flex-col 
+        max-md:w-full">
+                <div>
                     <UserConfig result={(type, message) => feedbackController(type, message)} id={userID} image={userImage} name={userName} phone={userPhone}></UserConfig>
-                </Case>
-                <Case>
+                </div>
+                <div>
                     <UserInsights></UserInsights>
-                </Case>
-            </Container>
-            <Container>
-                <Case>
+                </div>
+            </section>
+            <section className="flex w-4/5 gap-10 relative z-0 mt-10
+        max-md:flex-col 
+        max-md:w-full">
+                <div>
                     <HorariosUsuario   cliente={userPhone}></HorariosUsuario>
-                </Case>
-            </Container>
+                </div>
+            </section>
             {showFeedback && (
                 <FeedbackWrapper
                 result={true}
@@ -70,11 +73,11 @@ export default function Usuario() {
                 }}
                 />
             )}
-        </Main>
+        </main>
     )
 }
 
-export function showFeedback(
+function showFeedback(
     type: 'warning' | 'alert' | 'success',
     message: string
 ) {

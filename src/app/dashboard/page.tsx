@@ -153,7 +153,7 @@ export default function App() {
 
 
 
-export function showFeedback(
+function showFeedback(
     type: 'warning' | 'alert' | 'success',
     message: string
 ) {

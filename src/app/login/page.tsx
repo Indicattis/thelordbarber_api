@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useState } from 'react';
-import Footer from '@/components/footer/Footer';
 import Header from '@/components/header/Header';
 import Button from '@/components/button/Button';
 import animateJourney from '@/layout/animations/FadeUp';
@@ -12,11 +11,9 @@ import { checkUserExistence } from '@/data/server/Cliente';
 import Image from 'next/image';
 import Sign from '@/components/content/loginpage/Cadastrar';
 import Login from '@/components/content/loginpage/Logar';
-import FeedBack, { FeedBackProps } from '@/components/feedback/template';
+import { FeedBackProps } from '@/components/feedback/template';
 import FeedbackWrapper from '@/components/feedback/FeedBackWrapper';
 import UserImages from '@/data/UserImages';
-import { Main } from 'next/document';
-import { Case, Container } from '@/app/page';
 
 
 export default function LoginPage() {
@@ -82,8 +79,10 @@ export default function LoginPage() {
     return (
         <main>
             <Header></Header>
-            <Container>
-                <Case>
+            <section className="flex w-4/5 gap-10 relative z-0 mt-10
+        max-md:flex-col 
+        max-md:w-full">
+                <div>
 
                 <motion.div
                     className="w-[400px] max-sm:w-full p-5 h-full flex flex-col justify-center relative"
@@ -145,8 +144,8 @@ export default function LoginPage() {
                     }}
                     />
                 )}
-                </Case>
-            </Container>
+                </div>
+            </section>
             
         </main>
     );
@@ -154,7 +153,7 @@ export default function LoginPage() {
 
 
 
-export function showFeedback(type: 'warning' | 'alert' | 'success', message: string) {
+function showFeedback(type: 'warning' | 'alert' | 'success', message: string) {
   const feedbackProps: FeedBackProps = {
     message,
     type,

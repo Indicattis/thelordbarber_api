@@ -12,8 +12,6 @@ import { getTokenInfo } from '@/data/server/Token';
 import Image from 'next/image';
 import FeedbackWrapper from '@/components/feedback/FeedBackWrapper';
 import { FeedBackProps } from '@/components/feedback/template';
-import { Container } from '@/app/page';
-import Footer from '@/components/footer/Footer';
 import Enviar from '@/components/content/requirepage/Enviar';
 
 
@@ -115,7 +113,9 @@ export default function Agendamento() {
     return (
         <main>
             <Header></Header>
-            <Container>
+            <section className="flex w-4/5 gap-10 relative z-0 mt-10
+        max-md:flex-col 
+        max-md:w-full">
 
             <div className="w-[500px] max-lg:w-full bg-black text-whiteColor max-md:bg-[#0000009d] max-md:border-none
             rounded-md
@@ -167,7 +167,7 @@ export default function Agendamento() {
                 </div>
                 
             </div>
-            </Container>
+            </section>
             {showFeedback && (
                 <FeedbackWrapper
                 result={true}
@@ -182,7 +182,7 @@ export default function Agendamento() {
     );
 }
 
-export function showFeedback(
+function showFeedback(
     type: 'warning' | 'alert' | 'success',
     message: string
 ) {
