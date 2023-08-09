@@ -89,7 +89,7 @@ export default function Colaboradores(props: ColaboradoresProps) {
     
     return (
         <motion.div
-            className=" w-full text-zinc-800 p-3 flex flex-col gap-5 font-sans"
+            className=" w-full text-zinc-800 flex flex-col gap-5 font-sans"
             variants={animateJourney}
             initial="start"
             animate="visible"
