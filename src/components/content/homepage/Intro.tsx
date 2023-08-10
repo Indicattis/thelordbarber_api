@@ -26,7 +26,7 @@ export default function Intro() {
         </div>
         
         <div>
-            <Image src="img/logoNew2.png" alt="" width={250} height={250}/>
+            <Image src="/img/logoNew2.png" alt="" width={250} height={250}/>
         </div>
             {userLoged ? (
                 ''
