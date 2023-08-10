@@ -7,9 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build:pages": "next build pages",
-    "build:components": "next build components",
-    "build:styles": "next build styles"
+    "build:pages": "next build src/app",
+    "build:components": "next build src/components",
+    "build:data": "next build src/data",
+    "build:layout": "next build src/layout",
+    "build:utils": "next build src/utils"
   },
   "dependencies": {
     "@tabler/icons-react": "^2.30.0",
