@@ -50,13 +50,24 @@ export default function Horarios({ day, setHour, barber, toBack }: Props) {
         
         // Filtrar horários que não estão no passado em relação ao dia atual
         const filteredData = response.data.filter((horario: Horario) => {
-            const horarioTime = dayjs(horario.hour, "HH:mm:ss");
-            const currentTime = dayjs(); // Horário atual
+          const horarioTime = dayjs(horario.hour, "HH:mm:ss");
+          const currentTime = dayjs();
           
+          // Verificar se horarioDateTime é posterior a currentTime
+          if (dayjs(day).isAfter(currentTime)) {
+            return true;
+          }
+        
+          // Verificar se é o mesmo dia e horário posterior
+          if (dayjs(day).isSame(currentTime, 'day')) {
             return horarioTime.isAfter(currentTime);
-          });
-          
+          }
+        
+          return false;
+        });
+        
         setData(filteredData);
+
 
       } catch (error) {
         console.log(error);

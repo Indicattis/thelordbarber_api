@@ -8,12 +8,11 @@ import LocalizedFormat from 'dayjs/plugin/localizedFormat';
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import 'dayjs/locale/pt-br';
 import Agendamento from "@/data/Agendamento";
-import { IconAlarm, IconArrowBigRight, IconArrowNarrowRight, IconArrowRightCircle } from "@tabler/icons-react";
 import useProcess from "@/data/hooks/useProcess";
 import Image from "next/image";
-import {BarberName} from "@/data/server/convert";
 import { serverUrl } from "@/data/server/Config";
 import HorarioAgendado from "@/components/content/dashboard/utils/Agendamento";
+import { IconLivePhoto, IconPlayerTrackNextFilled, IconRotate } from "@tabler/icons-react";
 
 dayjs.extend(customParseFormat);
 dayjs.extend(LocalizedFormat);
@@ -25,6 +24,7 @@ export default function DashboardPainel() {
     const [agendamentos, setAgendamentos] = useState<Agendamento[]>([]);
     const { processing, processInit, processEnd } = useProcess()
     const [progress, setProgress] = useState(0);
+    const [stage, setStage] = useState(2)
 
     useEffect(() => {
         const fetchAppointments = async () => {
@@ -42,7 +42,6 @@ export default function DashboardPainel() {
 
         fetchAppointments();
     }, []);
-
 
     const categorizeAppointments = () => {
         const anterior:any = [];
@@ -67,8 +66,6 @@ export default function DashboardPainel() {
     };
     const { anterior, agora, proximo } = categorizeAppointments();
     const [groups, setGroups] = useState(categorizeAppointments());
-
-
 
     const updateAppointments = () => {
         const updatedGroups = categorizeAppointments();
@@ -102,7 +99,7 @@ export default function DashboardPainel() {
 
     return (
         <motion.div
-            className="w-full bg-white text-zinc-800 rounded-md shadow p-5 flex flex-col font-sans"
+            className="w-full bg-white text-zinc-800 rounded-md shadow p-3 flex flex-col font-sans gap-2"
             variants={animateJourney}
             initial="start"
             animate="visible"
@@ -114,57 +111,99 @@ export default function DashboardPainel() {
                 <Image className="rounded-full" alt="" src="/img/vetor.png" width={35} height={35}></Image>
             </div>
             <ProgressBar progress={progress} />
+
+            <div className="flex rounded-full h-8 border w-1/2 overflow-hidden">
+                <div className={`${stage == 1 && "bg-blue-400 text-white"} h-full w-1/3 flex items-center cursor-pointer`} onClick={() => setStage(1)}><IconRotate/></div>
+                <div className={`${stage == 2 && "bg-blue-400 text-white"} h-full w-1/3 flex items-center cursor-pointer`} onClick={() => setStage(2)}><IconLivePhoto/></div>
+                <div className={`${stage == 3 && "bg-blue-400 text-white"} h-full w-1/3 flex items-center cursor-pointer`} onClick={() => setStage(3)}><IconPlayerTrackNextFilled/></div>
+            </div>
+
             <div className="w-full flex justify-center py-1 text-sm gap-5 max-md:flex-col">
                 {/* Renderizar os agendamentos de cada grupo */}
-                <div className="w-full rounded-md flex flex-col gap-3 items-center">
-                    <div className="w-full bg-white flex items-center gap-5 p-1 ">
-                        <div className="w-full text-xl uppercase font-semibold">Realizados</div>
-                    </div>
-                    {processing ? <Image alt="" src="/gif/Pulse-1s-244px.gif" width={50} height={0}/> : 
-                    anterior.map((agendamento: any) => (
-                        <HorarioAgendado
-                        barber={agendamento.id_barbeiro}
-                        id_cliente={agendamento.id_cliente}
-                        day={agendamento.day}
-                        hour={agendamento.hour}
-                        product={agendamento.product}
-                        cliente={agendamento.cliente}
-                        value={agendamento.value}
-                        key={agendamento.id}
-                        deleteHorario={() => updateAppointments}
-                        id={agendamento.id}
-                        />
-                    )).reverse()}
-                </div>
-                <div className="w-full rounded-md flex flex-col gap-3">
-                    <div className="w-full bg-white flex items-center gap-5 p-1 ">
-                        <div className="w-full text-xl uppercase font-semibold">Agora</div>
-                    </div>
-                    {processing ? <Image alt="" src="/gif/Pulse-1s-244px.gif" width={50} height={0}/> : 
-                    agora.map((agendamento: any) => (
-                        <div key={agendamento.id} className="w-full flex items-center gap-5  rounded-md overflow-hidden border  cursor-pointer hover:bg-zinc-100 transition-all">
-                            <div className="px-3 py-2 h-full text-white bg-green-500 flex items-center">{agendamento.hour}</div>
-                            <div>{agendamento.id_cliente}</div>
-                            <div><IconArrowNarrowRight/></div>
-                            <div className="w-full"><BarberName id={agendamento.id_barbeiro}/></div>
-                        </div>
-                    ))}
-                </div>
-                <div className="w-full rounded-md flex flex-col gap-3">
-                    <div className="w-full bg-white flex items-center gap-5 p-1 ">
+                {
+                    stage == 1 && (
+                        <motion.div 
+                        variants={animateJourney}
+                        initial="start"
+                        animate="visible"
+                        exit="end"
+                        className="w-full rounded-md flex flex-col gap-3 items-center">
+                            
+                            {processing ? <Image alt="" src="/gif/Pulse-1s-244px.gif" width={50} height={0}/> : 
+                            anterior.map((agendamento: any) => (
+                                <HorarioAgendado
+                                barber={agendamento.id_barbeiro}
+                                id_cliente={agendamento.id_cliente}
+                                day={agendamento.day}
+                                hour={agendamento.hour}
+                                product={agendamento.product}
+                                cliente={agendamento.cliente}
+                                value={agendamento.value}
+                                key={agendamento.id}
+                                deleteHorario={() => updateAppointments}
+                                id={agendamento.id}
+                                type="default"
+                                />
+                            )).reverse()}
+                        </motion.div>
+                    )
+                }
+                {
+                    stage == 2 && (
+                        <motion.div 
+                        variants={animateJourney}
+                        initial="start"
+                        animate="visible"
+                        exit="end" 
+                        className="w-full rounded-md flex flex-col gap-3 items-center">
                         
-                        <div className="w-full text-xl uppercase font-semibold">Próximos</div>
-                    </div>
-                    {processing ? <Image alt="" src="/gif/Pulse-1s-244px.gif" width={50} height={0}/> : 
-                    proximo.map((agendamento: any) => (
-                        <div key={agendamento.id} className="w-full flex items-center gap-5  rounded-md overflow-hidden border  cursor-pointer hover:bg-zinc-100 transition-all">
-                            <div className="px-3 py-2 h-full text-white bg-blue-500 flex items-center">{agendamento.hour}</div>
-                            <div>{agendamento.id_cliente}</div>
-                            <div><IconArrowNarrowRight/></div>
-                            <div className="w-full"><BarberName id={agendamento.id_barbeiro}/></div>
-                        </div>
-                    ))}
-                </div>
+                        {processing ? <Image alt="" src="/gif/Pulse-1s-244px.gif" width={50} height={0}/> : 
+                        agora.map((agendamento: any) => (
+                            <HorarioAgendado
+                            barber={agendamento.id_barbeiro}
+                            id_cliente={agendamento.id_cliente}
+                            day={agendamento.day}
+                            hour={agendamento.hour}
+                            product={agendamento.product}
+                            cliente={agendamento.cliente}
+                            value={agendamento.value}
+                            key={agendamento.id}
+                            deleteHorario={() => updateAppointments}
+                            id={agendamento.id}
+                            type="active"
+                            />
+                        )).reverse()}
+                    </motion.div>
+                    )
+                }
+                {
+                    stage == 3 && (
+                        <motion.div 
+                        variants={animateJourney}
+                        initial="start"
+                        animate="visible"
+                        exit="end"
+                        className="w-full rounded-md flex flex-col gap-3 items-center">
+                        
+                        {processing ? <Image alt="" src="/gif/Pulse-1s-244px.gif" width={50} height={0}/> : 
+                        proximo.map((agendamento: any) => (
+                            <HorarioAgendado
+                            barber={agendamento.id_barbeiro}
+                            id_cliente={agendamento.id_cliente}
+                            day={agendamento.day}
+                            hour={agendamento.hour}
+                            product={agendamento.product}
+                            cliente={agendamento.cliente}
+                            value={agendamento.value}
+                            key={agendamento.id}
+                            deleteHorario={() => updateAppointments}
+                            id={agendamento.id}
+                            type="enable"
+                            />
+                        )).reverse()}
+                    </motion.div>
+                    )
+                }
             </div>
         </motion.div>
     );

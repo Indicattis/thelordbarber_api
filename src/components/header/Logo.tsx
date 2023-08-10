@@ -11,7 +11,7 @@ export default function Logo() {
     text-zinc-300
     "
     onClick={() => window.location.href = '/'}>
-        <Image className="max-md:w-20" src="/img/LogoNew2.png" alt="" width={150} height={150}/>
+        <Image className="max-md:w-20" src="/img/logoNew.png" alt="" width={150} height={150}/>
     </div>
   )
 }

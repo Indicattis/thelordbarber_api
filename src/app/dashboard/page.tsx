@@ -84,7 +84,7 @@ export default function App() {
                     <Login sendToken={changeToken}></Login>
                 </main>
             ) : (
-                <main className='flex w-full gap-5'>
+                <main className='flex w-full gap-2'>
                     <DashboardHeader
                         name={name}
                         cargo={cargo}
@@ -112,7 +112,7 @@ export default function App() {
                                 Seja bem vindo! <b>{name}</b>
                             </div>
                             <div className="absolute flex items-center gap-10 right-5 max-md:relative">
-                                <div className="flex items-center gap-5 px-5 border border-blue-400 text-lg font-semibold text-blue-500 bg-blue-100 rounded-full">
+                                <div className="w-[120px] flex items-center gap-1 px-2 border border-blue-400 text-lg font-semibold text-blue-500 bg-blue-100 rounded-full">
                                     <div>
                                         <IconAlarm />
                                     </div>

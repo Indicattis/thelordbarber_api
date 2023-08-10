@@ -48,7 +48,7 @@ export default function AgendamentosDia(props: AgendamentosDiaProps) {
     }
     return (
         <Box>
-            <Legend>Agendamentos</Legend>
+            <Legend>Agendamentos do dia</Legend>
             <div className="w-full flex flex-col gap-5">
             {processing ? <Image alt="" src="/gif/Pulse-1s-244px.gif" width={50} height={0}/> : 
             agendamentos.map(agendamento => (
