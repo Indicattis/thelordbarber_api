@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build:pages": "next build pages",
+    "build:components": "next build components",
+    "build:styles": "next build styles"
   },
   "dependencies": {
     "@tabler/icons-react": "^2.30.0",
