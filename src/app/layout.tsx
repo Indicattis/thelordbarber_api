@@ -27,7 +27,7 @@ export default function RootLayout({
             text-sm flex flex-col
             font-poppins items-center"
         >
-            <div className="w-full text-sm text-zinc-400">
+            <div className="w-full text-sm text-zinc-400 max-md:hidden">
                 <div className="grid grid-cols-3 gap-2 w-full justify-around items-center p-5">
                     <div>Suporte</div>
                     <div>Sobre nós</div>

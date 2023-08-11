@@ -49,10 +49,10 @@ export default function Usuario() {
             <section className="flex w-4/5 gap-10 relative z-0 mt-10
         max-md:flex-col 
         max-md:w-full">
-                <div className="w-1/2">
+                <div className="w-1/2 max-md:w-full">
                     <UserConfig result={(type, message) => feedbackController(type, message)} id={userID} image={userImage} name={userName} phone={userPhone}></UserConfig>
                 </div>
-                <div className="w-1/2">
+                <div className="w-1/2 max-md:w-full">
                     <UserInsights></UserInsights>
                 </div>
             </section>

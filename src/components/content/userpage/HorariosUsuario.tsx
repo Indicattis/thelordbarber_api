@@ -14,6 +14,7 @@ import { BarberName } from "@/data/server/convert";
 import { serverUrl } from "@/data/server/Config";
 import ExpandDown from "@/utils/ExpandDown";
 import useProcess from "@/data/hooks/useProcess";
+import dataDelete from "@/data/contexts/useDelete";
 
 
 dayjs.extend(customParseFormat)
@@ -26,6 +27,7 @@ dayjs.locale('pt-BR')
 interface HorariosProps {
     cliente: number | undefined
 }
+
 
 export default function HorariosUsuario(props: HorariosProps) {
     const [data, setData] = useState<Agendamento[]>([]);
@@ -50,22 +52,24 @@ export default function HorariosUsuario(props: HorariosProps) {
         };
 
         fetchData();
-    }, [props.cliente]);
+    }, [props.cliente, dataDelete]);
 
     
     return (
-        <div className="w-full flex flex-col gap-3">
+        <div className="w-[600px] flex flex-col gap-3 max-md:w-full">
             {processing ? <Image alt="" src="/gif/Pulse-1s-244px.gif" width={50} height={50}/> : (
-                data.map((agendamento) => (
+                data.sort((a, b) => b.id - a.id) // Ordenar por ID em ordem decrescente
+                .map((agendamento) => (
                     <Horario 
                     key={agendamento.id}
                     id_cliente={agendamento.id_cliente}
-                    day={agendamento.day}
+                    day={dayjs(agendamento.day).add(1, "day")}
                     hour={agendamento.hour}
                     id={agendamento.id}
                     id_barbeiro={agendamento.id_barbeiro}
                     value={agendamento.value}
                     product={agendamento.product}
+                    onClick={() => dataDelete('agendamento', agendamento.id)}
                     />
                 ))
             )}
@@ -83,6 +87,7 @@ interface HorarioProps {
     value: number,
     id_barbeiro: number,
     id_cliente: number | undefined,
+    onClick: () => void
 }
 
 function Horario(props: HorarioProps) {
@@ -117,7 +122,7 @@ function Horario(props: HorarioProps) {
                     <div className="rounded-sm p-1 w-full bg-darkTheme border border-zinc-800">R${props.value},00</div>
                     <div className="w-full flex gap-3">
                         <Button variant="red">Cancelar Agendamento</Button>
-                        <Button variant="blue">Comprovante</Button>
+                        <Button variant="blue" onClick={() => props.onClick}>Comprovante</Button>
                     </div>
                 </div>
             </ExpandDown>

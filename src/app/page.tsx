@@ -21,10 +21,10 @@ export default function App() {
         <section className="flex w-4/5 gap-10 relative z-0 mt-10
         max-md:flex-col 
         max-md:w-full">
-            <div className="w-1/2">
+            <div className="w-1/2 max-md:w-full">
                 <Local></Local>
             </div>
-            <div className="w-1/2">
+            <div className="w-1/2 max-md:w-full">
                 <Menu itens={Itens}></Menu>
             </div>
         </section>
