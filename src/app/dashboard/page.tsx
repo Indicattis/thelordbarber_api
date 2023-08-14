@@ -18,6 +18,7 @@ import customParseFormat from 'dayjs/plugin/customParseFormat';
 import 'dayjs/locale/pt-br';
 import { FeedBackProps } from '@/components/feedback/template';
 import FeedbackWrapper from '@/components/feedback/FeedBackWrapper';
+import QRCodeDisplay from '@/components/content/dashboard/Bot';
 
 dayjs.extend(customParseFormat);
 dayjs.extend(LocalizedFormat);

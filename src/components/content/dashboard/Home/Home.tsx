@@ -1,3 +1,4 @@
+import QRCodeDisplay from "@/components/content/dashboard/Bot"
 import AgendamentosDia from "@/components/content/dashboard/Home/AgendamentosDia"
 import DashboardPainel from "@/components/content/dashboard/Home/PainelAgendamentos"
 
@@ -9,11 +10,12 @@ interface DashboardHomeProps {
 
 export default function DashboardHome(props:DashboardHomeProps) {
     return (
-        <div className="w-full flex gap-5 max-md:flex-col">
-            <DashboardPainel></DashboardPainel>
+        <div className="w-full flex gap-5 flex-col">
             <div className="w-full flex gap-5">
-            <AgendamentosDia feedbackToggle={(type, message) => props.feedbackToggle(type, message)}></AgendamentosDia>
+                <DashboardPainel></DashboardPainel>
+                <AgendamentosDia feedbackToggle={(type, message) => props.feedbackToggle(type, message)}></AgendamentosDia>
             </div>
+            <QRCodeDisplay></QRCodeDisplay>
         </div>
     )
 } 
