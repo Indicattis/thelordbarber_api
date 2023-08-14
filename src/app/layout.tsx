@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
             <link rel="icon" href="/ico/favicon.ico" />
-            <meta property="og:image" content="/devline/devline-logo.png" />
+            <meta property="og:image" content="/img/Logo.jpeg" />
         </head>
       <body className='font-sans min-h-screen'>
         {children}
