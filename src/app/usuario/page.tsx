@@ -53,7 +53,7 @@ export default function Usuario() {
                     <UserConfig result={(type, message) => feedbackController(type, message)} id={userID} image={userImage} name={userName} phone={userPhone}></UserConfig>
                 </div>
                 <div className="w-1/2 max-md:w-full">
-                    <UserInsights></UserInsights>
+                    <UserInsights id={userID && userID}></UserInsights>
                 </div>
             </section>
             <section className="flex w-4/5 gap-10 relative z-0 mt-10

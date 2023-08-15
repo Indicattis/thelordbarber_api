@@ -35,7 +35,7 @@ export default function Cliente(props: ClienteProps) {
                         <div className="w-full max-lg:hidden">{props.phone}</div>
                         <div className="">{props.recurrence == true ? <IconVip/> : <IconVipOff/>}</div>
                         <div>
-                            <Button variant="light">
+                            <Button variant="light" onClick={() => window.location.href = `https://wa.me/55${props.phone}`}>
                                 <IconBrandWhatsapp/>
                             </Button>
                         </div>

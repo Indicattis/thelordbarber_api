@@ -32,7 +32,7 @@ export default function Intro() {
                 ''
             ): (
                 <div>
-                    <Button variant="primary">Clique aqui para fazer login!</Button>
+                    <Button variant="primary" onClick={() => window.location.href = '/login'}>Clique aqui para fazer login!</Button>
                 </div>
             )}
         </motion.div>

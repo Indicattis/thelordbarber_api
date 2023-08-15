@@ -1,5 +1,6 @@
 'use client'
 
+import numberURL from '@/data/SendWpp';
 import { IconBrandInstagram, IconBrandWhatsapp, IconMapPinFilled, IconRazorElectric } from '@tabler/icons-react';
 import Image from 'next/image';
 
@@ -33,7 +34,7 @@ export default function Contato() {
                 <div className='flex p-5 w-full justify-center font-poppins gap-5 max-lg:flex-col'>
                     <ContatoItem 
                     icon={<IconBrandWhatsapp className='m-1 text-green-500'/>}
-                    onClick={() => relocate('/')}>
+                    onClick={() => relocate(`${numberURL}/?text=Olá`)}>
                         <span className='m-2'>
                          WhatsApp
                         </span>

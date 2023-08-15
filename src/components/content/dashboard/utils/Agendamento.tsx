@@ -160,7 +160,7 @@ export default function HorarioAgendado(props: HorarioAgendadoProps) {
             <Button variant="red" onClick={() => props.deleteHorario(props.id)}>
               <IconTrash />
             </Button>
-            <Button variant="green">
+            <Button variant="green" onClick={() => window.location.href = `https://wa.me/55${props.cliente}`}>
               <IconBrandWhatsapp />
             </Button>
           </div>
