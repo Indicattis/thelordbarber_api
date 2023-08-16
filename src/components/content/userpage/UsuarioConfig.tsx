@@ -88,14 +88,14 @@ export default function UserConfig({
 
     return (
         <motion.div
-            className="flex gap-5 rounded-sm max-md:w-[90%] max-md:flex-col"
+            className="flex gap-5 rounded-sm max-md:w-full max-md:flex-col mt-[-80px]"
             variants={animateJourney}
             initial="start"
             animate="visible"
             exit="end"
         >
             <div
-                className="flex w-full gap-5 items-center text-white bg-darkTheme mt-20  border border-zinc-800 text-sm
+                className="flex w-full gap-5 items-center text-white bg-black mt-20  border border-zinc-800 text-sm
                     p-3 rounded-sm"
             >
                 {isEdit ? (
@@ -113,7 +113,7 @@ export default function UserConfig({
                         <div>Editar informações</div>
                         <input
                             type="text"
-                            className="bg-black outline-none p-3 w-full rounded-md"
+                            className="bg-darkTheme outline-none p-3 w-full rounded-md"
                             defaultValue={name}
                             onChange={(event) => handleNameChange(event)}
                         />
@@ -122,7 +122,7 @@ export default function UserConfig({
                             type="text"
                             placeholder={phone?.toString()}
                             value={phone}
-                            className="bg-black outline-none p-3 w-full rounded-md"
+                            className="bg-darkTheme outline-none p-3 w-full rounded-md"
                             disabled
                         />
                         {editPass && (
@@ -130,7 +130,7 @@ export default function UserConfig({
                                 <input
                                     type="text"
                                     placeholder="Nova Senha"
-                                    className="bg-black outline-none p-3 w-full rounded-md"
+                                    className="bg-darkTheme outline-none p-3 w-full rounded-md"
                                     onChange={(event) =>
                                         handlePasswordChange(event)
                                     }
@@ -138,7 +138,7 @@ export default function UserConfig({
                                 <input
                                     type="text"
                                     placeholder="Repetir Nova Senha"
-                                    className="bg-black outline-none p-3 w-full rounded-md"
+                                    className="bg-darkTheme outline-none p-3 w-full rounded-md"
                                     onChange={(event) =>
                                         handleRepeatPasswordChange(event)
                                     }

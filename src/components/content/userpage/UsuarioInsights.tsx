@@ -27,20 +27,20 @@ export default function UserInsights(props: UserInsightsProps) {
     fetchCompletedAppointments();
   }, [props.id]);
   
-  const filledStars = Math.min(completedAppointments, 4) + 1;
+  const filledStars = Math.min(completedAppointments, 4);
   
 
 
   return (
     <motion.div
-      className="flex gap-5 rounded-sm max-md:w-[90%] max-md:flex-col"
+      className="flex gap-5 rounded-sm max-md:w-full max-md:flex-col"
       variants={animateJourney}
       initial="start"
       animate="visible"
       exit="end"
     >
       <div
-        className="flex flex-col w-full gap-5 items-center text-white bg-darkTheme mt-20 border border-zinc-800 text-sm p-3 rounded-sm"
+        className="flex flex-col w-full gap-5 items-center text-white bg-black border border-zinc-800 text-sm p-3 rounded-sm"
       >
         <Legend>Progresso</Legend>
         <div className="flex w-full">
@@ -60,7 +60,12 @@ export default function UserInsights(props: UserInsightsProps) {
         <div className="p-2 font-sans text-sm text-zinc-800">
           ! Ao completar 5 cortes você receberá um grátis
         </div>
-        <Button variant="primary">COLETAR Recompensa</Button>
+        <div className="w-full flex gap-3">
+            <Button variant="light">Saiba mais</Button>
+            {filledStars > 4 ? (
+                <Button variant="green">Abrir Gift</Button>
+            ) : ''}
+        </div>
       </div>
     </motion.div>
   );

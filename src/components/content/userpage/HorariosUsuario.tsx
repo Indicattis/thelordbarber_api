@@ -15,6 +15,7 @@ import { serverUrl } from "@/data/server/Config";
 import ExpandDown from "@/utils/ExpandDown";
 import useProcess from "@/data/hooks/useProcess";
 import dataDelete from "@/data/contexts/useDelete";
+import { Legend } from "@/components/content/dashboard/utils/Layout";
 
 
 dayjs.extend(customParseFormat)
@@ -26,6 +27,7 @@ dayjs.locale('pt-BR')
 
 interface HorariosProps {
     cliente: number | undefined
+    result: (type: 'warning' | 'alert' | 'success', message: string) => void;
 }
 
 
@@ -52,11 +54,20 @@ export default function HorariosUsuario(props: HorariosProps) {
         };
 
         fetchData();
-    }, [props.cliente, dataDelete]);
+    }, [props.cliente]);
 
-    
+    async function deleteHorario(id: number) {
+        try {
+            dataDelete('agendamento', id)
+        }
+        finally{
+            props.result('alert', 'Agendamento Excluído!');
+            window.location.href = '/usuario'
+        }
+    }
     return (
-        <div className="w-[600px] flex flex-col gap-3 max-md:w-full">
+        <div className="w-full flex flex-col gap-5 max-md:w-full text-white bg-black p-3 border border-zinc-800 h-full">
+            <Legend>Meus Agendamentos</Legend>
             {processing ? <Image alt="" src="/gif/Pulse-1s-244px.gif" width={50} height={50}/> : (
                 data.sort((a, b) => b.id - a.id) // Ordenar por ID em ordem decrescente
                 .map((agendamento) => (
@@ -69,7 +80,7 @@ export default function HorariosUsuario(props: HorariosProps) {
                     id_barbeiro={agendamento.id_barbeiro}
                     value={agendamento.value}
                     product={agendamento.product}
-                    onClick={() => dataDelete('agendamento', agendamento.id)}
+                    onClick={() => deleteHorario(agendamento.id)}
                     />
                 ))
             )}
@@ -96,8 +107,8 @@ function Horario(props: HorarioProps) {
         <div
             key={props.id}
             className={`p-2 flex flex-col w-full text-sm
-                        border border-zinc-800 rounded-sm font-poppins cursor-pointer
-                        max-md:text-sm bg-black text-white transition-all`}
+                        border border-zinc-800 rounded-md font-poppins cursor-pointer
+                        max-md:text-sm bg-darkTheme text-white transition-all`}
         >
             <div className="w-full flex gap-5 items-center">
                 <div className="">{dayjs(props.day).format("DD/MM/YYYY")}</div>
@@ -121,8 +132,8 @@ function Horario(props: HorarioProps) {
                     <div className="rounded-sm p-1 w-full bg-darkTheme border border-zinc-800">Corte: {props.product}</div>
                     <div className="rounded-sm p-1 w-full bg-darkTheme border border-zinc-800">R${props.value},00</div>
                     <div className="w-full flex gap-3">
-                        <Button variant="red">Cancelar Agendamento</Button>
-                        <Button variant="blue" onClick={() => props.onClick}>Comprovante</Button>
+                        <Button variant="red" onClick={() => props.onClick()}>Excluir</Button>
+                        <Button variant="blue">Comprovante</Button>
                     </div>
                 </div>
             </ExpandDown>

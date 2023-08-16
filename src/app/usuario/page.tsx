@@ -46,21 +46,21 @@ export default function Usuario() {
     return (
         <main>
             <Header></Header>
-            <section className="flex w-4/5 gap-10 relative z-0 mt-10
-        max-md:flex-col 
-        max-md:w-full">
-                <div className="w-1/2 max-md:w-full">
-                    <UserConfig result={(type, message) => feedbackController(type, message)} id={userID} image={userImage} name={userName} phone={userPhone}></UserConfig>
+            <section className="grid grid-cols-2 w-4/5 gap-3 relative mt-20 p-3 rounded-sm border border-zinc-800
+            max-md:grid-cols-1
+            max-md:w-full">
+                <div className="w-full flex flex-col gap-3">
+                    <div className="w-full">
+                        <UserConfig result={(type, message) => feedbackController(type, message)} id={userID} image={userImage} name={userName} phone={userPhone}></UserConfig>
+                    </div>
+                    <div className="w-full">
+                        <UserInsights id={userID && userID}></UserInsights>
+                    </div>
                 </div>
-                <div className="w-1/2 max-md:w-full">
-                    <UserInsights id={userID && userID}></UserInsights>
-                </div>
-            </section>
-            <section className="flex w-4/5 gap-10 relative z-0 mt-10
-        max-md:flex-col 
-        max-md:w-full">
                 <div className="w-full">
-                    <HorariosUsuario   cliente={userPhone}></HorariosUsuario>
+                    <HorariosUsuario result={(type, message) => feedbackController(type, message)} cliente={userPhone}></HorariosUsuario>
+                </div>
+                <div className="w-full">
                 </div>
             </section>
             {showFeedback && (
