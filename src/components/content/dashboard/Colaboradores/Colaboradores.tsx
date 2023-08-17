@@ -145,7 +145,6 @@ export default function Colaboradores(props: ColaboradoresProps) {
                 <div className="flex gap-5 w-full max-lg:flex-col">
                     <CalendarioHorarios sendParams={getDay} id_barbeiro={selectedBarbeiroId}></CalendarioHorarios>
                     <ListagemHorarios feedbackToggle={(type, message) => props.feedbackToggle(type,message)} barber={selectedBarbeiroId} day={day}></ListagemHorarios>
-
                 </div>
             ) : ""} 
         </motion.div>

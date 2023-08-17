@@ -118,11 +118,6 @@ export default function DashboardCalendario(props: DCalendarioProps) {
                                         ? ' text-zinc-200 cursor-no-drop border-none pointer-events-none'
                                         : ''
                                 }
-                                ${
-                                    ignore
-                                        ? 'text-zinc-200 cursor-not-allowed border-none pointer-events-none'
-                                        : ''
-                                }
                                 ${today ? 'text-black border' : ''}
                                 ${getDayClasses(date.subtract(1, 'day'))}`}
                                 onClick={() => getParams(date)}

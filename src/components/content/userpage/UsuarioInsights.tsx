@@ -42,7 +42,7 @@ export default function UserInsights(props: UserInsightsProps) {
       <div
         className="flex flex-col w-full gap-5 items-center text-white bg-black border border-zinc-800 text-sm p-3 rounded-sm"
       >
-        <Legend>Progresso</Legend>
+        <Legend>Seu Progresso</Legend>
         <div className="flex w-full">
           {Array.from({ length: 5 }).map((_, index) =>
             index < filledStars ? (

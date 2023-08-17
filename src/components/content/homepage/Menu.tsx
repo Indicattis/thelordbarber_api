@@ -42,7 +42,7 @@ function MenuItem(props: MenuItemProps) {
     return (
         <div className={`text-white text-xl w-full border border-zinc-800 transition-all
         rounded-md bg-darkTheme cursor-pointer h-24 flex items-center
-        overflow-hidden relative
+        overflow-hidden relative font-senthir
         ${over ? "border-white scale-105" : ""}`}
         onMouseOver={() => setOver(true)}
         onMouseLeave={() => setOver(false)}

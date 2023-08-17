@@ -113,8 +113,8 @@ export default function DashboardPainel() {
             <ProgressBar progress={progress} />
 
             <div className="flex rounded-full h-8 border w-1/2 overflow-hidden">
-                <div className={`${stage == 1 && "bg-blue-400 text-white"} h-full w-1/3 flex items-center cursor-pointer`} onClick={() => setStage(1)}><IconRotate/></div>
-                <div className={`${stage == 2 && "bg-blue-400 text-white"} h-full w-1/3 flex items-center cursor-pointer`} onClick={() => setStage(2)}><IconLivePhoto/></div>
+                <div className={`${stage == 1 && "bg-zinc-100"} h-full w-1/3 flex items-center cursor-pointer`} onClick={() => setStage(1)}><IconRotate/></div>
+                <div className={`${stage == 2 && "bg-green-400 text-white"} h-full w-1/3 flex items-center cursor-pointer`} onClick={() => setStage(2)}><IconLivePhoto/></div>
                 <div className={`${stage == 3 && "bg-blue-400 text-white"} h-full w-1/3 flex items-center cursor-pointer`} onClick={() => setStage(3)}><IconPlayerTrackNextFilled/></div>
             </div>
 

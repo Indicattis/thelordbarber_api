@@ -8,6 +8,7 @@ import { serverUrl } from "@/data/server/Config";
 import { motion } from "framer-motion"
 import animateJourney from "@/layout/animations/FadeUp";
 import { useEffect, useState } from "react";
+import numberURL from "@/data/SendWpp";
 
 interface LoginProps {
     existingUserName: string
@@ -99,6 +100,7 @@ export default function Login(props: LoginProps) {
                         )}
                     </div>
                 </div>
+                <Button variant="light" onClick={() => window.location.href = `${numberURL}/?text=SENHA`}>Esqueci a senha</Button>
                 
                 <div className="w-full flex gap-5">
                     <Button variant="red" onClick={() => props.handleReset()}>Voltar</Button>

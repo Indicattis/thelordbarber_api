@@ -12,8 +12,8 @@ export interface MenuItemModel{
 const Itens: MenuItemModel[] = [
     {
         id: 1,
-        name: "Agendar",
-        image: "/home/home--1.jpeg",
+        name: "agendamento",
+        image: "/home/home--1.png",
         icon: "IconClockPlus",
         desc: "Clique e marque seu horário!",
         link: "/agendamento"
@@ -29,8 +29,8 @@ const Itens: MenuItemModel[] = [
     },
     {
         id: 3,
-        name: "minha agenda",
-        image:  "/home/home--2.jpeg",
+        name: "minha conta",
+        image:  "/home/home--2.png",
         icon: "IconUserCircle",
         desc: "Veja seus horários!",
         link: "/usuario"
