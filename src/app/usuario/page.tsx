@@ -46,7 +46,7 @@ export default function Usuario() {
     return (
         <main>
             <Header></Header>
-            <section className="grid grid-cols-2 w-4/5 gap-3 relative mt-20 p-3 rounded-sm border border-zinc-800
+            <section className="grid grid-cols-2 w-4/5 gap-3 relative mt-20 p-3
             max-md:grid-cols-1
             max-md:w-full">
                 <div className="w-full flex flex-col gap-3">

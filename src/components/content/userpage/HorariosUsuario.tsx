@@ -74,7 +74,7 @@ export default function HorariosUsuario(props: HorariosProps) {
                     <Horario 
                     key={agendamento.id}
                     id_cliente={agendamento.id_cliente}
-                    day={dayjs(agendamento.day).add(1, "day")}
+                    day={dayjs(agendamento.day)}
                     hour={agendamento.hour}
                     id={agendamento.id}
                     id_barbeiro={agendamento.id_barbeiro}

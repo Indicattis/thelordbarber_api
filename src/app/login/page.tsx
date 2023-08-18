@@ -85,7 +85,7 @@ export default function LoginPage() {
                 <div>
 
                 <motion.div
-                    className="w-[400px] max-sm:w-full p-5 h-full flex flex-col justify-center relative"
+                    className="w-full h-full flex flex-col justify-center relative"
                     variants={animateJourney}
                     initial="start"
                     animate="visible"
@@ -99,7 +99,7 @@ export default function LoginPage() {
                             height={0}
                         />
                     ) : (
-                        <div className="flex flex-col gap-5 font-poppins w-full text-white bg-black p-5 rounded-md">
+                        <div className="flex flex-col gap-5 font-poppins min-w-[350px] w-full text-white bg-black p-5 rounded-md">
                             <Image alt='' src={`/img/logoNew2.png`} width={200} height={200}></Image>
                             <div className='font-medium text-sm text-zinc-400'>{isSign ? (existingUser ? "Bem vindo!" : "Insira suas informações") : "Digite seu número de telefone:"}</div>
                             <input

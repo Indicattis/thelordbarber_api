@@ -11,7 +11,7 @@ interface DashboardHomeProps {
 export default function DashboardHome(props:DashboardHomeProps) {
     return (
         <div className="w-full flex gap-5 flex-col">
-            <div className="w-full flex gap-5">
+            <div className="w-full flex gap-5 max-lg:flex-col">
                 <DashboardPainel></DashboardPainel>
                 <AgendamentosDia feedbackToggle={(type, message) => props.feedbackToggle(type, message)}></AgendamentosDia>
             </div>
