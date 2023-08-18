@@ -13,6 +13,7 @@ interface UserInsightsProps {
 
 export default function UserInsights(props: UserInsightsProps) {
   const [completedAppointments, setCompletedAppointments] = useState<number>(0);
+  const [saibaMais, setSaibaMais] = useState<boolean>(false)
 
   useEffect(() => {
     const fetchCompletedAppointments = async () => {
@@ -33,7 +34,7 @@ export default function UserInsights(props: UserInsightsProps) {
 
   return (
     <motion.div
-      className="flex gap-5 rounded-sm max-md:w-full max-md:flex-col"
+      className="w-[380px] flex gap-5 rounded-sm max-md:w-full max-md:flex-col"
       variants={animateJourney}
       initial="start"
       animate="visible"
@@ -43,7 +44,7 @@ export default function UserInsights(props: UserInsightsProps) {
         className="flex flex-col w-full gap-5 items-center text-white bg-black border border-zinc-800 text-sm p-3 rounded-sm"
       >
         <Legend>Seu Progresso</Legend>
-        <div className="flex w-full">
+        <div className="flex w-full min-w-[250px]">
           {Array.from({ length: 5 }).map((_, index) =>
             index < filledStars ? (
               <IconStarFilled
@@ -57,11 +58,19 @@ export default function UserInsights(props: UserInsightsProps) {
             )
           )}
         </div>
-        <div className="p-2 font-sans text-sm text-zinc-800">
-          ! Ao completar 5 cortes você receberá um grátis
+        {saibaMais ? (
+        <div className=" bg-darkTheme p-3 rounded-md">
+            Requisitos:
+            <br /><br />
+            <div className="font-sans w-full flex flex-col gap-5 text-xs">
+                <div className="w-full">~ Realizar 5 agendamentos no site</div>
+                <div className="w-full">~ Os agendamentos devem ser atendidos dentro do prazo</div>
+                <div className="w-full">~ Para retirar o prêmio, deve ser mostrado o comprovante na hora do pagamento</div>
+            </div>
         </div>
+        ): ""}
         <div className="w-full flex gap-3">
-            <Button variant="light">Saiba mais</Button>
+            <Button variant="light" onClick={() => setSaibaMais(!saibaMais)}>{saibaMais ? 'OK' : 'Saiba mais'}</Button>
             {filledStars > 4 ? (
                 <Button variant="green">Abrir Gift</Button>
             ) : ''}
