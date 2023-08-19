@@ -50,7 +50,20 @@ export default function Sidebar (props: SidebarProps ) {
                     <Sideitem icon={<IconCalendarEvent />} path={"/agendamento"}> AGENDA</Sideitem>
                     <Sideitem icon={<IconRazorElectric />} path={"/usuario"}>Conta</Sideitem>
                     <Sideitem icon={<IconCircleKey/>} path={"/dashboard"}>Dashboard</Sideitem>
-                    
+                    <div className='absolute bottom-5 flex text-sm'>
+                        <div className="flex gap-4 items-center">
+                            <Image
+                                src="/devline/devline-logo.png"
+                                alt=""
+                                width={30}
+                                height={30}
+                                className="rounded-full"
+                            />
+
+                            <div className="text-sm">@DevLineRS</div>
+                            <a href="/usage">Termos de uso</a>
+                        </div>
+                    </div>
                 </div>
 
             </motion.div>

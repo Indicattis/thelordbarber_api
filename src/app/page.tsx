@@ -16,7 +16,6 @@ export default function App() {
     
   return (
     <main>
-        <Header/>
         <Intro/>
         <section className="flex w-4/5 gap-10 relative z-0 mt-10
         max-md:flex-col 

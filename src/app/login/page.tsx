@@ -78,7 +78,6 @@ export default function LoginPage() {
 
     return (
         <main>
-            <Header></Header>
             <section className="flex w-4/5 gap-10 relative z-0 mt-10
         max-md:flex-col 
         max-md:w-full">

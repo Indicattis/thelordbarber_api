@@ -45,7 +45,6 @@ export default function Usuario() {
 
     return (
         <main>
-            <Header></Header>
             <section className="grid grid-cols-2 w-4/5 gap-3 relative mt-20 p-3
             max-md:grid-cols-1
             max-md:w-full">

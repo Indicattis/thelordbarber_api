@@ -1,6 +1,9 @@
+
 import Image from 'next/image'
 import './globals.css'
 import type { Metadata } from 'next'
+import Modal from '@/components/modal/ModalController'
+import Header from '@/components/header/Header'
 
 
 export const metadata: Metadata = {
@@ -12,7 +15,8 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
-}) {
+})
+ {
   return (
     <html lang="en">
         <head>
@@ -20,6 +24,7 @@ export default function RootLayout({
             <meta property="og:image" content="/img/Logo.jpeg" />
         </head>
         <body className='font-sans min-h-screen'>
+            <Header></Header>
             {children}
             <footer
                 className="bg-darkTheme absolute bottom-[-200px]
@@ -28,12 +33,11 @@ export default function RootLayout({
                 font-poppins items-center"
             >
                 <div className="w-full text-sm text-zinc-400 max-md:hidden">
-                    <div className="grid grid-cols-3 gap-2 w-full justify-around items-center p-5">
-                        <div>Suporte</div>
-                        <div>Sobre nós</div>
-                        <div>Contato</div>
-                        <div>Termos de uso</div>
-                        <div>Políticas de privacidade</div>
+                    <div className="flex flex-col gap-2 w-full justify-around items-center p-5">
+                        <a href='/usage'>Políticas de privacidade</a>
+                        <a href='/usage'>Termos de uso</a>
+                        <a href='/usage'>Sobre nós</a>
+                        <a href='/usage'>Suporte</a>
                     </div>
                 </div>
 
