@@ -77,7 +77,7 @@ export default function Barbeiro({ setBarber }: Props) {
                           }`}
                 >
                     <div className="w-[105px] h-[85px] rounded-full overflow-hidden">
-                        <Image className="h-full w-full object-cover" src={barbeiro.imagem != '' ? `/uploads/${barbeiro.imagem}` : `/uploads/user_default.png`} alt="" width={1000} height={1000}/>
+                        <Image className="h-full w-full object-cover" src={barbeiro.imagem != '' ? `/uploads/${barbeiro.imagem}` : `/uploads/user_default.png`} alt="" width={100} height={100}/>
                     </div>
                     <div className="w-full">
                         <div className="text-zinc-800 font-poppins">
