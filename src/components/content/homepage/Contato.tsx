@@ -41,7 +41,7 @@ export default function Contato() {
                     </ContatoItem>
                     <ContatoItem 
                     icon={<IconBrandInstagram className='m-1 text-red-500'/>}
-                    onClick={() => relocate('https://www.instagram.com/rayan_barber01/')}
+                    onClick={() => relocate('https://www.instagram.com/thelord_barber.tattoo/')}
                     >
                         <span className='m-2'>
                             Instagram
