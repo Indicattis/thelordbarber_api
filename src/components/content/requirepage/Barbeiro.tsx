@@ -76,7 +76,7 @@ export default function Barbeiro({ setBarber }: Props) {
                               : "border-zinc-800"
                           }`}
                 >
-                    <div className="w-28 rounded-full overflow-hidden">
+                    <div className="w-[105px] h-[85px] rounded-full overflow-hidden">
                         <Image className="h-full w-full object-cover" src={barbeiro.imagem != '' ? `/uploads/${barbeiro.imagem}` : `/uploads/user_default.png`} alt="" width={1000} height={1000}/>
                     </div>
                     <div className="w-full">
