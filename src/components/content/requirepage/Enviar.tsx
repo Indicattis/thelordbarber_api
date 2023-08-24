@@ -41,11 +41,22 @@ export default function Enviar(props: EnviarProps) {
                 console.log('Cadastro realizado com sucesso:', response.data);
                 props.feedbackController('success', 'Agendamento realizado!')
                 setEnd(true)
+                sendFeedBack()
             })
             .catch(error => {
                 console.error('Erro ao cadastrar:', error);
             });
     };
+
+    const sendFeedBack = async () => {
+        await axios.get(`${serverUrl}/send-message`)
+        .then(response => {
+            console.log('Feedback enviado!', response.data);
+        })
+        .catch(error => {
+            console.error('Erro ao cadastrar:', error);
+        });
+    }
 
     function relocate(pathName: string) {
         window.location.pathname = pathName;
