@@ -69,7 +69,7 @@ export default function ClienteInfos(props:ClienteInfosProps) {
             <div className="flex w-full gap-5 items-center max-md:flex-col">
                 <div className="">
                     <div
-                        className="w-64 max-md:w-52 
+                        className="w-64 max-md:w-52 h-64
                         rounded-full overflow-hidden cursor-pointer transition-all relative"
                         onMouseOver={() => setHover(true)}
                         onMouseLeave={() => setHover(false)}
@@ -78,8 +78,8 @@ export default function ClienteInfos(props:ClienteInfosProps) {
                         <Image
                             src={previewImage ? `/${previewImage}` : '/uploads/'+props.imagem}
                             alt="Pré-visualização"
-                            className={`w-full transition-all border border-dashed p-2 rounded-full ${hover && "blur-sm scale-105"}`}
-                            width={1000} height={0}
+                            className={`w-full h-full object-contain transition-all border border-dashed p-2 rounded-full ${hover && "blur-sm scale-105"}`}
+                            width={200} height={200}
                         />
                         {
                             hover && (
