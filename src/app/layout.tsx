@@ -24,7 +24,7 @@ export default function RootLayout({
             <link rel="icon" href="/ico/favicon.ico" />
             <meta property="og:image" content="/img/Logo.jpeg" />
         </head>
-        <body className='font-sans min-h-screen'>
+        <body className='font-sans min-h-screen flex flex-col justify-between'>
             <Header></Header>
             {children}
             <Footer></Footer>

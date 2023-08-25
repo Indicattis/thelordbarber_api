@@ -56,7 +56,7 @@ export default function Login(props: DashboardLoginProps) {
 
 
     return (
-        <div className="h-screen w-[400px] max-md:w-full shadow-md p-5 flex flex-col justify-center gap-5 bg-white rounded-md overflow-hidden">
+        <div className="bg-white p-3 w-[400px] max-md:w-full rounded-md">
             <Image className="w-36" src="/img/logoNewBlack.png" alt="" width={1000} height={1000} />
             <form className="flex flex-col gap-5 w-full" onSubmit={handleSubmit(handleLogin)}>
                 <input

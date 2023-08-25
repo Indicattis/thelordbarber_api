@@ -79,13 +79,13 @@ export default function App() {
         };
     }, []);
     return (
-        <div className="bg-zinc-100 flex">
+        <main className="w-full">
             {token === undefined ? (
-                <main className='bg-zinc-100'>
+                <main className=''>
                     <Login sendToken={changeToken}></Login>
                 </main>
             ) : (
-                <main className='flex w-full gap-2'>
+                <main className='flex w-full gap-2 bg-zinc-100'>
                     <DashboardHeader
                         name={name}
                         cargo={cargo}
@@ -147,7 +147,7 @@ export default function App() {
                 )}
                 </main>
             )}
-        </div>
+        </main>
     );
 }
 

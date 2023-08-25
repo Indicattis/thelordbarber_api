@@ -3,7 +3,7 @@ import Image from 'next/image';
 export default function Footer() {
     return (
         <footer
-                className="bg-darkTheme absolute bottom-[-400px]
+                className="bg-darkTheme mt-20
                 w-full text-whiteColor
                 text-sm flex flex-col
                 font-poppins items-center"
