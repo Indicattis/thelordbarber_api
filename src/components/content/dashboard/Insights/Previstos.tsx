@@ -1,4 +1,4 @@
-import { IconAntennaBars4, IconChartInfographic, IconChartLine } from "@tabler/icons-react";
+import { IconChartInfographic, IconChartLine } from "@tabler/icons-react";
 import axios from "axios";
 import Button from "@/components/button/Button";
 import { Legend } from "@/components/content/dashboard/utils/Layout";

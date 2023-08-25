@@ -80,7 +80,7 @@ export default function HorariosUsuario(props: HorariosProps) {
                     id_barbeiro={agendamento.id_barbeiro}
                     value={agendamento.value}
                     product={agendamento.product}
-                    onClick={() => deleteHorario(agendamento.id)}
+                    onClick={() => alert('Não é possível excluir o agendamento, contate o Administrador')}
                     />
                 ))
             )}

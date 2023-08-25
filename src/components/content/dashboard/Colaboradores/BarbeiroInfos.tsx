@@ -6,6 +6,7 @@ import animateJourney from "@/layout/animations/FadeUp";
 import useProcess from "@/data/hooks/useProcess";
 import { useCallback, useEffect, useState } from "react";
 import { serverUrl } from "@/data/server/Config";
+import Image from "next/image";
 
 type Barbeiro = {
     id: number;
@@ -85,7 +86,7 @@ export default function BarbeiroInfos(props: BarbeiroInfosProps) {
             initial="start"
             animate="visible"
             exit="end">
-            {processing ? "" : (
+            {processing ? <Image alt="" src="/gif/Pulse-1s-244px.gif" width={50} height={50}/> : (
 data.length > 0 ? (
     <div className="w-full flex flex-col gap-5 text-sm text-center font-poppins">
         <div className="w-full flex items-center">
