@@ -78,7 +78,7 @@ function Produto(props: ProdutoProps) {
         }`}
         onClick={handleClick}
       >
-            <div className="w-1/4">
+            <div className="w-1/4 h-20 overflow-hidden">
                 <Image src={`/${product.image}`} alt="" draggable="false" className="rounded-md" width={90} height={90}/>
             </div>
             <div className="flex flex-col w-full text-zinc-800">

@@ -14,7 +14,7 @@ const Products: ProductModel[] = [
         name: "Cabelo",
         type: "cabelo",
         value: 35,
-        image: "haircuts/cabelo.png"
+        image: "haircuts/cabelo.jpeg"
     },
     {
         id: 2,
@@ -28,13 +28,20 @@ const Products: ProductModel[] = [
         name: "Sobrancelha",
         type: "sobrancelha",
         value: 10,
-        image:  "haircuts/sobrancelha.jpg"
+        image:  "haircuts/sobrancelha.jpeg"
     },
     {
         id: 4,
+        name: "Combo Cabelo + Barba",
+        type: "combo_simples",
+        value: 55,
+        image:  "haircuts/combo_simples.jpeg"
+    },
+    {
+        id: 5,
         name: "Combo Triplo",
         type: "combo",
-        value: 60,
+        value: 65,
         image:  "haircuts/combo.jpg"
     }
 ]
