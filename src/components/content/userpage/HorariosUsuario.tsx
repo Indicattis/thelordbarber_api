@@ -101,7 +101,9 @@ interface HorarioProps {
     onClick: () => void
 }
 
+
 function Horario(props: HorarioProps) {
+    const newDay = dayjs(props.day).add(1, 'day')
     const [active, setActive] = useState<boolean>(false)
     return (
         <div
@@ -111,7 +113,7 @@ function Horario(props: HorarioProps) {
                         max-md:text-sm bg-darkTheme text-white transition-all`}
         >
             <div className="w-full flex gap-5 items-center">
-                <div className="">{dayjs(props.day).format("DD/MM/YYYY")}</div>
+                <div className="">{dayjs(newDay).format("DD/MM/YYYY")}</div>
                 <div>{props.hour}</div>
                 <div className="font-senthir w-full text-zinc-800 max-md:hidden"><BarberName id={props.id_barbeiro}/></div>
                 <div className="font-sans text-white max-md:hidden">R${props.value},00</div>
@@ -126,7 +128,7 @@ function Horario(props: HorarioProps) {
                 <div className="w-full flex flex-col gap-3 items-start">
                     <div className="w-full flex gap-3 max-md:flex-col">
                         <div className="rounded-sm p-1 w-full bg-darkTheme border border-zinc-800">ID: {props.id}</div>
-                        <div className="rounded-sm p-1 w-full bg-darkTheme border border-zinc-800">Dia: {dayjs(props.day).format("DD [de] MMMM, YYYY")}</div>
+                        <div className="rounded-sm p-1 w-full bg-darkTheme border border-zinc-800">Dia: {dayjs(newDay).format("DD [de] MMMM, YYYY")}</div>
                         <div className="rounded-sm p-1 w-full bg-darkTheme border border-zinc-800">Hora: {props.hour}</div>
                     </div>
                     <div className="rounded-sm p-1 w-full bg-darkTheme border border-zinc-800">Corte: {props.product}</div>
