@@ -20,7 +20,7 @@ export default function dataDelete(table: string, id: number | undefined) {
         
         case 'barbeiro':
             try {
-            axios.delete(`${serverUrl}/post-delete-barbeiro/${id}`);
+            axios.post(`${serverUrl}/post-delete-barbeiro/${id}`);
             } catch (error) {
             console.log(error);
             }

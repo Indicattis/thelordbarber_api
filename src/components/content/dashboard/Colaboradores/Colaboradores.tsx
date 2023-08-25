@@ -60,11 +60,11 @@ export default function Colaboradores(props: ColaboradoresProps) {
         processInit()
         try {
             await dataDelete('barbeiro', id)
-            await fetchData();
         }
         finally {
             setSelectedBarbeiroId(null);
             props.feedbackToggle('warning', 'Barbeiro deletado!');
+            fetchData();
             processEnd();
         }
     }
