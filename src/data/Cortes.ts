@@ -135,7 +135,7 @@ const Cortes: CorteModel[] = [
         image: "haircuts/models/23.jpeg",
         icon: "IconRazor",
         desc: "",
-    },
+    }
 ]
 
 export default Cortes;
