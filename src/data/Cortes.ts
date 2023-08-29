@@ -58,6 +58,84 @@ const Cortes: CorteModel[] = [
         icon: "IconRazor",
         desc: "",
     },
+    {
+        id: 11,
+        image: "haircuts/models/11.jpeg",
+        icon: "IconRazor",
+        desc: "",
+    },
+    {
+        id: 12,
+        image: "haircuts/models/12.jpeg",
+        icon: "IconRazor",
+        desc: "",
+    },
+    {
+        id: 13,
+        image: "haircuts/models/13.jpeg",
+        icon: "IconRazor",
+        desc: "",
+    },
+    {
+        id: 14,
+        image: "haircuts/models/14.jpeg",
+        icon: "IconRazor",
+        desc: "",
+    },
+    {
+        id: 15,
+        image: "haircuts/models/15.jpeg",
+        icon: "IconRazor",
+        desc: "",
+    },
+    {
+        id: 16,
+        image: "haircuts/models/16.jpeg",
+        icon: "IconRazor",
+        desc: "",
+    },
+    {
+        id: 17,
+        image: "haircuts/models/17.jpeg",
+        icon: "IconRazor",
+        desc: "",
+    },
+    {
+        id: 18,
+        image: "haircuts/models/18.jpeg",
+        icon: "IconRazor",
+        desc: "",
+    },
+    {
+        id: 19,
+        image: "haircuts/models/19.jpeg",
+        icon: "IconRazor",
+        desc: "",
+    },
+    {
+        id: 20,
+        image: "haircuts/models/20.jpeg",
+        icon: "IconRazor",
+        desc: "",
+    },
+    {
+        id: 21,
+        image: "haircuts/models/21.jpeg",
+        icon: "IconRazor",
+        desc: "",
+    },
+    {
+        id: 22,
+        image: "haircuts/models/22.jpeg",
+        icon: "IconRazor",
+        desc: "",
+    },
+    {
+        id: 23,
+        image: "haircuts/models/23.jpeg",
+        icon: "IconRazor",
+        desc: "",
+    },
 ]
 
 export default Cortes;
