@@ -124,7 +124,7 @@ const Cortes: CorteModel[] = [
         icon: "IconRazor",
         desc: "",
     },
-    {
+    { 
         id: 22,
         image: "haircuts/models/22.jpeg",
         icon: "IconRazor",
