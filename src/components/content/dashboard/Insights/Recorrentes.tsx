@@ -13,7 +13,7 @@ import { useEffect, useState, useCallback } from "react";
 export default function Recorrentes() {
     const [data, setData] = useState<Clientes[]>([]);
     const { processing, processInit, processEnd } = useProcess();
-    const recurrencePrice = 120
+    const recurrencePrice = 135
 
     const fetchData = useCallback(async () => {
         processInit();
