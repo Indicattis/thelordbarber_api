@@ -81,7 +81,7 @@ export default function App() {
     return (
         <main className="w-full">
             {token === undefined ? (
-                <main className=''>
+                <main className='h-screen flex items-center'>
                     <Login sendToken={changeToken}></Login>
                 </main>
             ) : (

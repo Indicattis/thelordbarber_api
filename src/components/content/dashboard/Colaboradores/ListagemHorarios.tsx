@@ -60,7 +60,7 @@ export default function ListagemHorarios(props: ListagemAgendamentosProps) {
     return (
         <Box>
         <Legend>Horários Livres</Legend>
-            <div className='w-full flex flex-col gap-2'>
+            <div className='w-full flex flex-col gap-1'>
             {processing || !props.day ? <Image alt="" src="/gif/Pulse-1s-244px.gif" width={50} height={0}/> : 
             data.map((horario) => (
                 <HorarioDisponivel

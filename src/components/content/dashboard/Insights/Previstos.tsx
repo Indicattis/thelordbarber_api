@@ -58,7 +58,7 @@ export default function Previstos() {
                 {graphType ? (
                     <ResponsiveContainer width="95%" height={isMobile ? 600 : 400}>
                         <BarChart data={agendamentos.map((agendamento) => ({ ...agendamento, key: agendamento.dia }))}>
-                            <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+                            <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
                             <XAxis dataKey="dia" />
                             {!isMobile && <YAxis />}
                             <Tooltip />

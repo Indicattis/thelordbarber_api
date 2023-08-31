@@ -14,6 +14,7 @@ import Insights from "@/components/content/dashboard/Colaboradores/Insights";
 import Maintence from "@/components/content/dashboard/Colaboradores/Maintence";
 import CalendarioHorarios from "@/components/content/dashboard/Colaboradores/Calendario";
 import ListagemHorarios from "@/components/content/dashboard/Colaboradores/ListagemHorarios";
+import dayjs from "dayjs";
 
 
 type Barbeiro = {
@@ -30,10 +31,13 @@ interface ColaboradoresProps {
 }
 
 export default function Colaboradores(props: ColaboradoresProps) {
+
+    const currentDate = dayjs();
+
     const [data, setData] = useState<Barbeiro[]>([]);
     const [selectedBarbeiroId, setSelectedBarbeiroId] = useState<number | null>(null);
     const { processing, processInit, processEnd } = useProcess();
-    const [day, setDay] = useState()
+    const [day, setDay] = useState(dayjs(currentDate).format('YYYY-MM-DD'))
 
     const fetchData = useCallback ( async () => {
         processInit()

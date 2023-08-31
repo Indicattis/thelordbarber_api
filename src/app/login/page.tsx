@@ -14,6 +14,7 @@ import Login from '@/components/content/loginpage/Logar';
 import { FeedBackProps } from '@/components/feedback/template';
 import FeedbackWrapper from '@/components/feedback/FeedBackWrapper';
 import UserImages from '@/data/UserImages';
+import Footer from '@/components/footer/Footer';
 
 
 export default function LoginPage() {
@@ -77,7 +78,8 @@ export default function LoginPage() {
     //     phone.replace(/[^0-9]/g, '').length !== 11;
 
     return (
-        <main>
+        <main className='w-full'>
+        <Header></Header>
             <section className="flex w-4/5 gap-10 relative z-0 mt-10
         max-md:flex-col 
         max-md:w-full">

@@ -4,6 +4,7 @@ import Intro from "@/components/content/homepage/Intro";
 import Menu from "@/components/content/homepage/Menu";
 import Slider from "@/components/content/homepage/Slider";
 import Local from "@/components/content/homepage/local";
+import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
 import Cortes from "@/data/Cortes";
 import Itens from "@/data/Menu";
@@ -16,6 +17,7 @@ export default function App() {
     
   return (
     <main>
+        <Header></Header>
         <Intro/>
         <section className="flex w-4/5 gap-10 relative z-0 mt-10
         max-md:flex-col 
@@ -38,6 +40,7 @@ export default function App() {
         max-md:w-full">
             <Contato></Contato>
         </section>
+        <Footer></Footer>
     </main>
   )
 }

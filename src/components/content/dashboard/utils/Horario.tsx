@@ -35,14 +35,15 @@ export default function HorarioDisponivel(props: HorarioDisponivelProps) {
         setLevel(props.status === 1 ? true : false);
     }, [props.status]);
     return (
-        <div className={`flex gap-3 w-full  px-3 py-1 items-center rounded-full border font-medium
-        ${level ? "border-blue-200 text-blue-900 bg-white" : "border-white text-zinc-400 bg-zinc-100 opacity-75"}`}>
+        <div className={`flex gap-3 w-full  px-3 py-1 items-center rounded-md border font-medium cursor-pointer
+        ${level ? "border-blue-500 text-blue-500 bg-blue-100" : "border-white text-zinc-400 bg-zinc-100 opacity-75"}`}
+        onClick={() => props.changeStatus(props.id, level)}>
             <div className='w-full text-sm'>{props.hour}</div>
             <div className='w-full text-sm'>{dayjs(dayPlusOne).format('DD / MM / YYYY')}</div>
             <div className='w-full text-sm max-md:hidden'>{props.status === 1 ? "DISPONÍVEL" : "INDISPONÍVEL"}</div>
             <div className='w-full text-sm max-md:hidden'>Código: {props.id}</div>
             <div>
-                <Button variant='light' onClick={() => props.changeStatus(props.id, level)}>
+                <Button variant='light'>
                 {level ? (
                     
                     <IconToggleRight className='text-blue-800'></IconToggleRight>

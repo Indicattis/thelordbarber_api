@@ -13,6 +13,7 @@ import Image from 'next/image';
 import FeedbackWrapper from '@/components/feedback/FeedBackWrapper';
 import { FeedBackProps } from '@/components/feedback/template';
 import Enviar from '@/components/content/requirepage/Enviar';
+import Footer from '@/components/footer/Footer';
 
 
 export default function Agendamento() {
@@ -112,6 +113,7 @@ export default function Agendamento() {
 
     return (
         <main className="w-full">
+        <Header></Header>
             <section className="flex w-4/5 gap-10 relative z-0 mt-10
         max-md:flex-col 
         max-md:w-full">
