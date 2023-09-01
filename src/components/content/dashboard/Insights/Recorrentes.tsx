@@ -99,7 +99,7 @@ export default function Recorrentes() {
             {processing ? <Image alt="" src="/gif/Pulse-1s-244px.gif" width={50} height={50}/> : (
                 data.map((recorrente: any, index: number) => (
                     <div key={index} className="w-full flex flex-col overflow-hidden shadow rounded-sm">
-                        <div className="w-full px-2 bg-zinc-100">{recorrente.name}</div>
+                        <div className="w-full h-12 px-2 bg-zinc-100">{recorrente.name}</div>
                         <div className="text-sm w-full px-2">{recorrente.phone}</div>
                         <div className="uppercase w-full px-2 bg-zinc-100">{recorrente.recurrence_day} {recorrente.recurrence_hour}</div>
                         <div className="px-2 bg-blue-100 w-full text-blue-500 border border-blue-400">BRL{recurrencePrice}.00</div>
