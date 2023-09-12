@@ -55,7 +55,7 @@ export default function Usuario() {
                         <UserConfig result={(type, message) => feedbackController(type, message)} id={userID} image={userImage} name={userName} phone={userPhone}></UserConfig>
                     </div>
                     <div className="w-full">
-                        <UserInsights id={userID && userID}></UserInsights>
+                        <UserInsights id={userID && userID} name={userName && userName}></UserInsights>
                     </div>
                 </div>
                 <div className="w-full">

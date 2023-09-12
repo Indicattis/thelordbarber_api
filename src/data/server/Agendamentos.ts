@@ -73,3 +73,15 @@ export async function fetchAgendamentosInsights(barber: any, selectedDays: any) 
         throw error;
     }
 }
+
+export async function deleteAgendamentosCliente(id: number) {
+    try {
+        const response = await axios.post(
+            `${serverUrl}/delete-agendamentos-cliente/${id}`
+        );
+        return response.data;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}

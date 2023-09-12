@@ -1,4 +1,4 @@
-import { IconBuildingSkyscraper, IconCalendarEvent, IconChartBar, IconLayoutDashboard, IconLogout, IconUser, IconUsersGroup } from "@tabler/icons-react";
+import { IconBuildingSkyscraper, IconCalendarEvent, IconChartBar, IconGift, IconLayoutDashboard, IconLogout, IconUser, IconUsersGroup } from "@tabler/icons-react";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -59,6 +59,12 @@ export default function DashboardHeader(props: DashboardHeaderProps) {
                         icon={<IconChartBar />} 
                         onItemClick={() => changeStage(5)} 
                         setBg={stage == 5 ? "zinc-100" : "white"}
+                    />
+                    <DashboardHeaderItem 
+                        item={"Gifts"} 
+                        icon={<IconGift />} 
+                        onItemClick={() => changeStage(7)} 
+                        setBg={stage == 7 ? "zinc-100" : "white"}
                     />
                 </nav>
             </header>

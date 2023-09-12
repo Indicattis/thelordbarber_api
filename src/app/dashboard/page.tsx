@@ -18,6 +18,7 @@ import 'dayjs/locale/pt-br';
 import { FeedBackProps } from '@/components/feedback/template';
 import FeedbackWrapper from '@/components/feedback/FeedBackWrapper';
 import MyAcount from '@/components/content/dashboard/Conta/MyAcount';
+import GiftsShowCase from '@/components/content/dashboard/Gifts/Gifts';
 
 dayjs.extend(customParseFormat);
 dayjs.extend(LocalizedFormat);
@@ -132,6 +133,7 @@ export default function App() {
                         {dep === 4 && <DashboardClientes  feedbackToggle={(type, message) => feedbackController(type, message)}/>}
                         {dep === 5 && <DashboardInsights />}
                         {dep === 6 && <MyAcount feedbackToggle={(type, message) => feedbackController(type, message)} name={name} cargo={cargo} login={user} barber_id={id} imagem={imagem}/>}
+                        {dep === 7 && <GiftsShowCase/>}
                     </div>
                     
                 {showFeedback && (

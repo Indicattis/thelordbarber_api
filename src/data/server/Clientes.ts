@@ -35,3 +35,15 @@ export async function updateCliente(id: number, requestData: any) {
         throw error;
     }
 }
+
+export async function getCliente(id: number) {
+    try {
+        const response = await axios.get(
+            `${serverUrl}/cliente-name-only/${id}`
+        );
+        return response.data.name;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
