@@ -72,7 +72,7 @@ export default function Intro() {
                         />
                     </div>
                     <div className="flex flex-col gap-3 p-3 rounded-md font-senthir text-sm items-center justify-center">
-                        <UserInsights id={userID}></UserInsights>
+                        <UserInsights name={userName} id={userID}></UserInsights>
                     </div>
                 </div>
             ) : (
