@@ -53,7 +53,7 @@ export default function GiftsShowCase() {
                 </div>
                 {processing ? <Image alt="" src="/gif/Pulse-1s-244px.gif" width={50} height={0}/> : 
                 data.map(item => (
-                    <div className={`w-full flex gap-3 rounded text-sm font-medium
+                    <div key={item.id} className={`w-full flex gap-3 rounded text-sm font-medium
                     ${item.status ? "border-blue-300 bg-blue-100 text-blue-700" : "border-zinc-200 bg-zinc-100 text-zinc-700"}`}>
                         <div className="w-24 text-center py-2"> {item.id} </div>
                         <div className="w-full py-2"> {item.rewards} </div>
