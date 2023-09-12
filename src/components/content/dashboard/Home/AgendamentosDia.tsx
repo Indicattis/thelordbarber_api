@@ -1,4 +1,3 @@
-import axios from "axios";
 import { Box, Legend } from "@/components/content/dashboard/utils/Layout";
 import Agendamento from "@/data/Agendamento";
 import { useCallback, useEffect, useState } from "react";
@@ -9,7 +8,7 @@ import HorarioAgendado from "@/components/content/dashboard/utils/Agendamento";
 import dataDelete from "@/data/contexts/useDelete";
 import useProcess from "@/data/hooks/useProcess";
 import Image from "next/image";
-import { serverUrl } from "@/data/server/Config";
+import { fetchAgendamentosDia } from "@/data/server/Agendamentos";
 
 
 interface AgendamentosDiaProps {
@@ -27,8 +26,8 @@ export default function AgendamentosDia(props: AgendamentosDiaProps) {
     const fetchData = useCallback (async () => {
         try {
             processInit()
-            const response = await axios.get(`${serverUrl}/agendamentos-dia/${today.format('YYYY-MM-DD')}`);
-            setAgendamentos(response.data);
+            const agendamentosData = await fetchAgendamentosDia(today);
+            setAgendamentos(agendamentosData);
         } catch (error) {
             console.log(error);
         }

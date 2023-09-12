@@ -1,14 +1,13 @@
 import { IconCheck, IconX } from "@tabler/icons-react";
 import Button from "@/components/button/Button";
 import { Box, Legend } from "@/components/content/dashboard/utils/Layout";
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
 import LocalizedFormat from 'dayjs/plugin/localizedFormat';
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import 'dayjs/locale/pt-br';
 import { useCallback, useEffect, useState } from "react";
-import axios from "axios";
 import useProcess from "@/data/hooks/useProcess";
-import { serverUrl } from "@/data/server/Config";
+import { fetchHorariosBarbeiro, insertHorariosBarbeiro } from "@/data/server/Horarios";
 
 dayjs.extend(customParseFormat);
 dayjs.extend(LocalizedFormat);
@@ -34,11 +33,9 @@ export default function Maintence(props: MaintenceProps) {
     const fetchData = useCallback(async (month: any, setQuantidade: any) => {
       processInit();
       try {
-        const response = await axios.get(`${serverUrl}/horarios-status`, {
-          params: { id: props.id_barbeiro, month },
-        });
+        const insert = await fetchHorariosBarbeiro(props.id_barbeiro, month);
       
-        setQuantidade(response.data.quantidadeLinhas);
+        setQuantidade(insert.quantidadeLinhas);
       } catch (error) {
         console.error('Erro na requisição:', error);
       }
@@ -55,11 +52,7 @@ export default function Maintence(props: MaintenceProps) {
     async function gerarHorarios(id: number | undefined, month: number){
         try {
             processInit()
-            await axios.post(`${serverUrl}/insert-horarios-barbeiro-mes`,  
-            { 
-                barber_id: id,
-                month: month,
-            })
+            await insertHorariosBarbeiro(props.id_barbeiro, month)
             .then((response) => {
               console.log("Horários inseridos no banco");
             })

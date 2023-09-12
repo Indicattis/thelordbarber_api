@@ -1,9 +1,8 @@
-import axios from "axios";
 import { Legend } from "@/components/content/dashboard/utils/Layout";
-import { serverUrl } from "@/data/server/Config";
 import { motion } from "framer-motion";
 import animateJourney from "@/layout/animations/FadeUp";
 import { useEffect, useState } from "react";
+import { fetchAgendamentosInsights } from "@/data/server/Agendamentos";
 
 interface InsightsProps {
   barberId: any;
@@ -17,9 +16,9 @@ export default function Insights(props: InsightsProps) {
   useEffect(() => {
     const fetchAgendamentos = async () => {
       try {
-        const response = await axios.get(`${serverUrl}/horarios-barbeiro/${props.barberId}/${selectedDays}`);
-        setAgendamentos(response.data.quantidade);
-        setTotalAgendamentos(response.data.total);
+        const AgendamentosInsights = await fetchAgendamentosInsights(props.barberId, selectedDays)
+        setAgendamentos(AgendamentosInsights.quantidade);
+        setTotalAgendamentos(AgendamentosInsights.total);
       } catch (error) {
         console.error('Erro ao obter a quantidade de agendamentos:', error);
       }

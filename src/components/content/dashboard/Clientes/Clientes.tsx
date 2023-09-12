@@ -11,7 +11,6 @@ interface DashboardClientesProps {
 export default function DashboardClientes(props: DashboardClientesProps) {
     const [cliente, setCliente] = useState<number>(0)
     const [phone, setPhone] = useState<number>(0)
-    const { processing, processInit, processEnd } = useProcess();
 
     function changeCliente(receivedClienteId: number, receivedPhone: number) {
         setCliente(receivedClienteId)

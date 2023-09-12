@@ -15,6 +15,7 @@ import Maintence from "@/components/content/dashboard/Colaboradores/Maintence";
 import CalendarioHorarios from "@/components/content/dashboard/Colaboradores/Calendario";
 import ListagemHorarios from "@/components/content/dashboard/Colaboradores/ListagemHorarios";
 import dayjs from "dayjs";
+import { deleteBarbeiro, fetchBarbeiros, insertBarbeiro } from "@/data/server/Barbeiros";
 
 
 type Barbeiro = {
@@ -42,8 +43,8 @@ export default function Colaboradores(props: ColaboradoresProps) {
     const fetchData = useCallback ( async () => {
         processInit()
         try {
-            const response = await axios.get(`${serverUrl}/barbeiros`);
-            setData(response.data);
+            const agendamentosData = await fetchBarbeiros();
+            setData(agendamentosData);
         } catch (error) {
             console.log(error);
         }
@@ -63,20 +64,20 @@ export default function Colaboradores(props: ColaboradoresProps) {
     async function barberDel(id: number) {
         processInit()
         try {
-            await dataDelete('barbeiro', id)
+            await deleteBarbeiro(id);
         }
         finally {
-            setSelectedBarbeiroId(null);
             props.feedbackToggle('warning', 'Barbeiro deletado!');
-            fetchData();
+            setSelectedBarbeiroId(null);
             processEnd();
+            fetchData();
         }
     }
 
     async function barberGen() {
         processInit()
         try {
-            await axios.post(`${serverUrl}/post-insert-barber`)
+            await insertBarbeiro();
         }
         finally {
             props.feedbackToggle('success', 'Barbeiro criado!');

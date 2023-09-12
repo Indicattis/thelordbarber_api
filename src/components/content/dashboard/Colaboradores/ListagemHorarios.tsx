@@ -6,6 +6,7 @@ import useProcess from '@/data/hooks/useProcess';
 import { serverUrl } from '@/data/server/Config';
 import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
+import { fetchHorariosDiaBarbeiro, updateHorario } from '@/data/server/Horarios';
 
 interface ListagemAgendamentosProps {
     barber: number;
@@ -20,10 +21,8 @@ export default function ListagemHorarios(props: ListagemAgendamentosProps) {
     const fetchData = useCallback(async () => {
         try {
             processInit();
-            const response = await axios.get(
-                `${serverUrl}/horarios-barbeiro-dia/${props.barber}/${props.day}`
-            );
-            setData(response.data);
+            const HorariosDiaBarbeiro = await fetchHorariosDiaBarbeiro(props.barber, props.day)
+            setData(HorariosDiaBarbeiro);
         } catch (error) {
             console.log(error);
         } finally {
@@ -36,16 +35,8 @@ export default function ListagemHorarios(props: ListagemAgendamentosProps) {
 
     const trocarDisponibilidadeHorario = async (id: number, level: boolean) => {
         processInit();
-        let status = 0
-        if (level == true) {status = 0} else {status = 1}
-        console.log(status)
         try {
-            const response = await axios.post(
-                `${serverUrl}/horario-status`, {
-                    id: id,
-                    status: status
-                }
-            )
+            const update = await updateHorario(id, level)
         }
         catch (error) {
             console.log(error);

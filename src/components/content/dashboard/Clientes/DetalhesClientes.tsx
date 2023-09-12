@@ -11,6 +11,7 @@ import animateJourney from "@/layout/animations/FadeUp";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { fetchCliente, updateCliente } from "@/data/server/Clientes";
 
 
 interface DetalhesClientesProps {
@@ -28,12 +29,10 @@ export default function DetalhesClientes(props: DetalhesClientesProps) {
     const fetchData = useCallback (async () => {
         try {
             processInit()
-            const response = await axios.get(
-                `${serverUrl}/clientes-id/${props.clienteId}`
-            );
-            setData(response.data);
-            reset(response.data[0]);
-            setRecurring(response.data[0].recurrence);
+            const Cliente = await fetchCliente(props.clienteId);
+            setData(Cliente);
+            reset(Cliente[0]);
+            setRecurring(Cliente[0].recurrence);
         } catch (error) {
             console.log(error);
         }
@@ -53,11 +52,7 @@ export default function DetalhesClientes(props: DetalhesClientesProps) {
                     ...data,
                     recurrence: recurring ? 1 : 0, // Converte para 1 (true) ou 0 (false)
                 };
-                const response = await axios.put(
-                    `${serverUrl}/cliente-set-all/${props.clienteId}`,
-                    requestData
-                );
-                console.log(data);
+                const update = await updateCliente(props.clienteId, requestData);
             }
         } catch (error) {
             console.log(error);

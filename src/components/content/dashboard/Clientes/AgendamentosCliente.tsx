@@ -14,6 +14,7 @@ import dataDelete from '@/data/contexts/useDelete';
 import useProcess from '@/data/hooks/useProcess';
 import Image from 'next/image';
 import { serverUrl } from '@/data/server/Config';
+import { fetchAgendamentosCliente } from '@/data/server/Agendamentos';
 
 interface AgendamentosClienteProps {
     clientePhone: number;
@@ -32,15 +33,8 @@ export default function AgendamentosCliente(props: AgendamentosClienteProps) {
     const fetchData = useCallback(async () => {
         try {
             processInit();
-          const response = await axios.get(
-            `${serverUrl}/agendamentos-cliente`,
-            {
-              params: {
-                cliente: props.clientePhone,
-              },
-            }
-          );
-          setData(response.data);
+          const AgendamentosCliente = await fetchAgendamentosCliente(props.clientePhone);
+          setData(AgendamentosCliente);
         } catch (error) {
           console.log(error);
         } finally {

@@ -10,6 +10,7 @@ import { motion } from "framer-motion"
 import animateJourney from "@/layout/animations/FadeUp"
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { fetchClientes } from "@/data/server/Clientes";
 
 
 interface ListagemClientesProps {
@@ -27,8 +28,8 @@ export default function ListagemClientes(props: ListagemClientesProps) {
     const fetchData = async () => {
         try {
             processInit();
-            const response = await axios.get(`${serverUrl}/clientes`);
-            setData(response.data);
+            const Clientes = await fetchClientes();
+            setData(Clientes);
         } catch (error) {
             console.log(error);
         }

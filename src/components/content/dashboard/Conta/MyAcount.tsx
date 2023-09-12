@@ -1,10 +1,10 @@
 import animateJourney from "@/layout/animations/FadeUp"
 import { motion } from "framer-motion"
-import SenhaCliente from "@/components/content/dashboard/Conta/ClienteSenha";
-import ClienteInfos from "@/components/content/dashboard/Conta/ClienteInfos";
+import Acount from "@/components/content/dashboard/Conta/Acount";
+import ChangePassword from "@/components/content/dashboard/Conta/ChangePassword";
 
 
-interface MinhaContaProps {
+interface MyAcountProps {
     cargo: string
     name: string
     barber_id: number
@@ -13,7 +13,7 @@ interface MinhaContaProps {
     feedbackToggle: (type: 'alert' | 'warning' | 'success', message: any) => void
 }
 
-export default function MinhaConta(props: MinhaContaProps) {
+export default function MyAcount(props: MyAcountProps) {
 
     return (
         <motion.div
@@ -23,8 +23,8 @@ export default function MinhaConta(props: MinhaContaProps) {
             animate="visible"
             exit="end"
         >
-                <ClienteInfos imagem={props.imagem} barber_id={props.barber_id} login={props.login} cargo={props.cargo} name={props.name}></ClienteInfos>
-                <SenhaCliente feedbackToggle={(type, message) => props.feedbackToggle(type,message)} barber_id={props.barber_id} />
+                <Acount imagem={props.imagem} barber_id={props.barber_id} login={props.login} cargo={props.cargo} name={props.name}></Acount>
+                <ChangePassword feedbackToggle={(type, message) => props.feedbackToggle(type,message)} barber_id={props.barber_id} />
         </motion.div>
     )
 }

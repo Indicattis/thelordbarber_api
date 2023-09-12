@@ -1,4 +1,3 @@
-import axios from "axios";
 import { Legend } from "@/components/content/dashboard/utils/Layout";
 import { motion } from "framer-motion";
 import animateJourney from "@/layout/animations/FadeUp";
@@ -10,9 +9,9 @@ import 'dayjs/locale/pt-br';
 import Agendamento from "@/data/Agendamento";
 import useProcess from "@/data/hooks/useProcess";
 import Image from "next/image";
-import { serverUrl } from "@/data/server/Config";
 import HorarioAgendado from "@/components/content/dashboard/utils/Agendamento";
 import { IconLivePhoto, IconPlayerTrackNextFilled, IconRotate } from "@tabler/icons-react";
+import { fetchAgendamentosDia } from "@/data/server/Agendamentos";
 
 dayjs.extend(customParseFormat);
 dayjs.extend(LocalizedFormat);
@@ -30,8 +29,8 @@ export default function DashboardPainel() {
         const fetchAppointments = async () => {
             try {
                 processInit()
-                const response = await axios.get(`${serverUrl}/agendamentos-dia/${today.format('YYYY-MM-DD')}`);
-                setAgendamentos(response.data);
+                const agendamentosData = await fetchAgendamentosDia(today);
+                setAgendamentos(agendamentosData);
             } catch (error) {
                 console.error('Erro ao buscar os agendamentos:', error);
             }

@@ -1,14 +1,12 @@
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { IconUser } from "@tabler/icons-react";
 import useProcess from "@/data/hooks/useProcess";
-import { serverUrl } from "@/data/server/Config";
 import { Box, Legend } from "@/components/content/dashboard/utils/Layout";
 import Colaborador from "@/components/content/dashboard/utils/Barbeiro";
 import Barbeiro from "@/data/Barbeiros";
-import axios from "axios";
+import { fetchBarbeiros } from "@/data/server/Barbeiros";
 
 interface AgendasColaboradoresProps {
     sendBarber: (id: number) => void
@@ -26,8 +24,8 @@ export default function AgendasColaboradores(props:AgendasColaboradoresProps) {
         const fetchData = async () => {
             try {
                 processInit()
-                const response = await axios.get(`${serverUrl}/barbeiros`);
-                setData(response.data);
+                const agendamentosData = await fetchBarbeiros();
+                setData(agendamentosData);
             } catch (error) {
                 console.log(error);
             }

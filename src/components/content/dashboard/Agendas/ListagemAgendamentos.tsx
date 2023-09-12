@@ -8,6 +8,7 @@ import useProcess from '@/data/hooks/useProcess';
 import { serverUrl } from '@/data/server/Config';
 import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
+import { fetchAgendamentosDiaBarbeiro } from '@/data/server/Agendamentos';
 
 interface ListagemAgendamentosProps {
     barber: number;
@@ -23,10 +24,8 @@ export default function ListagemAgendamentos(props: ListagemAgendamentosProps) {
     const fetchData = useCallback(async () => {
         try {
             processInit();
-            const response = await axios.get(
-                `${serverUrl}/agendamentos-barbeiro-dia/${props.barber}/${props.day}`
-            );
-            setData(response.data);
+            const AgendamentosDiaBarbeiro = await fetchAgendamentosDiaBarbeiro(props.barber, props.day)
+            setData(AgendamentosDiaBarbeiro);
         } catch (error) {
             console.log(error);
         } finally {

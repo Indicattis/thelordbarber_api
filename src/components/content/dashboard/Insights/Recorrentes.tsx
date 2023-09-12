@@ -2,6 +2,7 @@ import { Legend } from "@/components/content/dashboard/utils/Layout";
 import Clientes from "@/data/Clientes";
 import useProcess from "@/data/hooks/useProcess";
 import { serverUrl } from "@/data/server/Config";
+import { fetchRecurrenceUsers } from "@/data/server/Insights";
 import axios from "axios";
 import Image from "next/image";
 import { useEffect, useState, useCallback } from "react";
@@ -13,6 +14,7 @@ interface ChartData {
     day: string;
     revenue: number;
 }
+
 
 const mapDayCodeToName = (dayCode: string) => {
     const dayNames: any = {
@@ -36,9 +38,9 @@ export default function Recorrentes() {
     const fetchData = useCallback(async () => {
         processInit();
         try {
-            const response = await axios.get(`${serverUrl}/insights-recurrence-users`);
-            setData(response.data)
-            const userData = response.data;
+            const RecurrenceUsers = await fetchRecurrenceUsers();
+            setData(RecurrenceUsers)
+            const userData = RecurrenceUsers;
             const daysOfWeek = ["dom", "seg", "ter", "qua", "qui", "sex", "sab"];
 
             const dataByDay = daysOfWeek.map(dayCode => {
@@ -91,7 +93,7 @@ export default function Recorrentes() {
                 ))}
             </div>
             
-            <div className="grid grid-cols-6 gap-3 
+            {/* <div className="grid grid-cols-6 gap-3 
             max-lg:grid-cols-4
             max-md:grid-cols-2
             max-sm:grid-cols-1">
@@ -108,7 +110,7 @@ export default function Recorrentes() {
             )}
 
 
-            </div>
+            </div> */}
         </div>
     );
 }

@@ -6,7 +6,6 @@ import DashboardHeader from '@/components/content/dashboard/Header';
 import Login from '@/components/content/dashboard/Login';
 import { useEffect, useState } from 'react';
 import jwtDecode from 'jwt-decode';
-import MinhaConta from '@/components/content/dashboard/Conta/MinhaConta';
 import DashboardClientes from '@/components/content/dashboard/Clientes/Clientes';
 import DashboardHome from '@/components/content/dashboard/Home/Home';
 import { IconAlarm, IconLogout } from '@tabler/icons-react';
@@ -18,7 +17,7 @@ import customParseFormat from 'dayjs/plugin/customParseFormat';
 import 'dayjs/locale/pt-br';
 import { FeedBackProps } from '@/components/feedback/template';
 import FeedbackWrapper from '@/components/feedback/FeedBackWrapper';
-import QRCodeDisplay from '@/components/content/dashboard/Bot';
+import MyAcount from '@/components/content/dashboard/Conta/MyAcount';
 
 dayjs.extend(customParseFormat);
 dayjs.extend(LocalizedFormat);
@@ -132,7 +131,7 @@ export default function App() {
                         {dep === 3 && <Colaboradores feedbackToggle={(type, message) => feedbackController(type, message)}/>}
                         {dep === 4 && <DashboardClientes  feedbackToggle={(type, message) => feedbackController(type, message)}/>}
                         {dep === 5 && <DashboardInsights />}
-                        {dep === 6 && <MinhaConta feedbackToggle={(type, message) => feedbackController(type, message)} name={name} cargo={cargo} login={user} barber_id={id} imagem={imagem}/>}
+                        {dep === 6 && <MyAcount feedbackToggle={(type, message) => feedbackController(type, message)} name={name} cargo={cargo} login={user} barber_id={id} imagem={imagem}/>}
                     </div>
                     
                 {showFeedback && (

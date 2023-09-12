@@ -1,16 +1,15 @@
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
-import axios from 'axios';
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
 import { useEffect, useState, useCallback } from 'react';
 import { generateDate, months } from '@/utils/Calendar';
 import LocalizedFormat from 'dayjs/plugin/localizedFormat';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import 'dayjs/locale/pt-br';
-import { Box, Legend } from '@/components/content/dashboard/utils/Layout';
+import { Box } from '@/components/content/dashboard/utils/Layout';
 import useProcess from '@/data/hooks/useProcess';
 import Image from 'next/image';
 import Horario from '@/data/Horario';
-import { serverUrl } from '@/data/server/Config';
+import { fetchAgendamentosMesBarbeiro } from '@/data/server/Agendamentos';
 
 dayjs.extend(customParseFormat);
 dayjs.extend(LocalizedFormat);
@@ -33,10 +32,8 @@ export default function CalendarioHorarios(props: DCalendarioProps) {
     const fetchAgendamentos = useCallback(async (month: any) => {
         try {
             processInit();
-          const response = await axios.get(
-            `${serverUrl}/horarios-barbeiro-mes/${month}/${props.id_barbeiro}`
-          );
-          setHorarios(response.data);
+          const AgendamentosMesBarbeiro = await fetchAgendamentosMesBarbeiro(props.id_barbeiro, month)
+          setHorarios(AgendamentosMesBarbeiro);
         } catch (error) {
           console.error('Erro ao buscar agendamentos:', error);
           setHorarios([]);

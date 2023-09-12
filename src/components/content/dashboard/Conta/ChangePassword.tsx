@@ -1,17 +1,16 @@
 import { IconEye, IconEyeClosed } from "@tabler/icons-react";
-import axios from "axios";
 import Button from "@/components/button/Button";
 import { Box, Legend } from "@/components/content/dashboard/utils/Layout";
-import { serverUrl } from "@/data/server/Config";
 import { useState } from "react";
+import { updateBarbeiroPassword } from "@/data/server/Barbeiros";
 
 
-interface SenhaClienteProps {
+interface ChangePasswordProps {
     barber_id: number
     feedbackToggle: (type: 'alert' | 'warning' | 'success', message: any) => void
 }
 
-export default function SenhaCliente(props:SenhaClienteProps) {
+export default function ChangePassword(props:ChangePasswordProps) {
     const [showPassword, setShowPassword] = useState(false);
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -47,11 +46,7 @@ export default function SenhaCliente(props:SenhaClienteProps) {
         }
         else {
             try {
-                await axios.put(`${serverUrl}/admin-set-password`,  
-                { 
-                    barber_id: props.barber_id,
-                    password: password, 
-                })
+                await updateBarbeiroPassword(props.barber_id, password)
                 .then((response) => {
                   // Lógica após a alteração da senha (sucesso)
                   setPassword("");

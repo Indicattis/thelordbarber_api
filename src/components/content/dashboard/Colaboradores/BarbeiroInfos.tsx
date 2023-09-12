@@ -1,12 +1,11 @@
-import axios from "axios";
 import Button from "@/components/button/Button";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import animateJourney from "@/layout/animations/FadeUp";
 import useProcess from "@/data/hooks/useProcess";
 import { useCallback, useEffect, useState } from "react";
-import { serverUrl } from "@/data/server/Config";
 import Image from "next/image";
+import { fetchBarbeiro, updateBarbeiro } from "@/data/server/Barbeiros";
 
 type Barbeiro = {
     id: number;
@@ -28,139 +27,135 @@ export default function BarbeiroInfos(props: BarbeiroInfosProps) {
     const [data, setData] = useState<Barbeiro[]>([]);
 
     const onSubmit = async (data: Barbeiro) => {
-        processInit()
+        processInit();
         try {
             if (props.barbeiro) {
-                const response = await axios.put(
-                    `${serverUrl}/admin-set-all/${props.barbeiro}`,
-                    data
-                );
+                const update = await updateBarbeiro(props.barbeiro, data)
             }
         } catch (error) {
             console.log(error);
-        }
-        finally {
-            processEnd()
+        } finally {
+            processEnd();
         }
     };
-    // barber-id
 
-    const getBarberDetails = useCallback (async() => {
-        processInit()
-        try{
-            const response = await axios.get(`${serverUrl}/barber-id/${props.barbeiro}`)
-            setData(response.data);
+    const getBarberDetails = useCallback(async () => {
+        processInit();
+        try {
+            const Barbeiro = await fetchBarbeiro(props.barbeiro);
+            setData(Barbeiro);
+        } finally {
+            processEnd();
         }
-        finally {
+    }, [props.barbeiro]);
 
-            processEnd()
-        }
-    },[props.barbeiro])
+    useEffect(() => {
+        getBarberDetails();
+    }, []);
 
-    useEffect( () => {
-        getBarberDetails()
-    },[])
-    // async function gerarHorarios(id: number | undefined){
-    //     try {
-    //         processInit()
-    //         axios.post(`${serverURL}insert-horarios-barbeiro`,  
-    //         { 
-    //             barber_id: id,
-    //         })
-    //         .then((response) => {
-    //           console.log("Horários inseridos no banco");
-    //         })
-    //         .catch((error) => {
-    //           console.error("Erro ao inserir horários:", error);
-    //         });
-    //     }
-    //     finally {
-    //         processEnd()
-    //         props.refresh()
-    //     }
-    // }
-      
     return (
-        <motion.form onSubmit={handleSubmit(onSubmit)} className="max-md:w-full"
+        <motion.form
+            onSubmit={handleSubmit(onSubmit)}
+            className="max-md:w-full"
             variants={animateJourney}
             initial="start"
             animate="visible"
-            exit="end">
-            {processing ? <Image alt="" src="/gif/Pulse-1s-244px.gif" width={50} height={50}/> : (
-data.length > 0 ? (
-    <div className="w-full flex flex-col gap-5 text-sm text-center font-poppins">
-        <div className="w-full flex items-center">
-            <div className="bg-zinc-200 w-[120px] p-5 font-semibold">Usuário:</div>
-            <input
-                className="bg-zinc-100 p-5 w-full"
-                placeholder=""
-                type="text"
-                {...register("login")}
-                defaultValue={data[0].login}
-            />
-        </div>
-        <div className="w-full flex items-center">
-        <div className="bg-zinc-200 w-[120px] p-5 font-semibold">Nome:</div>
-            <input
-                className="bg-zinc-100 p-5  w-full"
-                placeholder=""
-                type="text"
-                {...register("nome")}
-                defaultValue={data[0].nome}
-            />
-        </div>
-        <div className="w-full flex items-center">
-        <div className="bg-zinc-200 w-[120px] p-5 font-semibold">Idade:</div>
-            <input
-                className="bg-zinc-100 p-5  w-full"
-                placeholder=""
-                type="number"
-                {...register("idade")}
-                defaultValue={data[0].idade}
-            />
-        </div>
-        
-        <div className="w-full flex items-center">
-            <div className="bg-zinc-200 w-[120px] p-5 font-semibold">Cargo:</div>
-            <select
-                className="bg-zinc-100 p-5  w-full"
-                placeholder={data[0].cargo}
-                {...register("cargo")}
-                defaultValue={data[0].cargo}
-            >
-                <option value="Administrador">Administrador</option>
-                <option value="Atendente">Atendente</option>
-                <option value="Proprietário">Proprietário</option>
-            </select>
-            
-        </div>
-        
-        <div className="w-full flex items-center">
-        <div className="bg-zinc-200 w-[120px] p-5 font-semibold">Senha:</div>
-        <input
-            className="bg-zinc-100 p-5  w-full"
-            placeholder=""
-            type="password"
-            {...register("senha")}
-            defaultValue={data[0].senha}
-        />
-            
-        </div>
-        <div className="flex gap-5 w-full">
-            <Button variant="green" type="submit">
-                Atualizar
-            </Button>
-            {data[0].cargo == "Proprietário" ? "" : (
-                <Button variant="red" type="button" onClick={() => props.deleteBarber(data[0].id)}>
-                Excluir
-            </Button>
+            exit="end"
+        >
+            {processing ? (
+                <Image
+                    alt=""
+                    src="/gif/Pulse-1s-244px.gif"
+                    width={50}
+                    height={50}
+                />
+            ) : data.length > 0 ? (
+                <div className="w-full flex flex-col gap-5 text-sm text-center font-poppins">
+                    <div className="w-full flex items-center">
+                        <div className="bg-zinc-200 w-[120px] p-5 font-semibold">
+                            Usuário:
+                        </div>
+                        <input
+                            className="bg-zinc-100 p-5 w-full"
+                            placeholder=""
+                            type="text"
+                            {...register("login")}
+                            defaultValue={data[0].login}
+                        />
+                    </div>
+                    <div className="w-full flex items-center">
+                        <div className="bg-zinc-200 w-[120px] p-5 font-semibold">
+                            Nome:
+                        </div>
+                        <input
+                            className="bg-zinc-100 p-5  w-full"
+                            placeholder=""
+                            type="text"
+                            {...register("nome")}
+                            defaultValue={data[0].nome}
+                        />
+                    </div>
+                    <div className="w-full flex items-center">
+                        <div className="bg-zinc-200 w-[120px] p-5 font-semibold">
+                            Idade:
+                        </div>
+                        <input
+                            className="bg-zinc-100 p-5  w-full"
+                            placeholder=""
+                            type="number"
+                            {...register("idade")}
+                            defaultValue={data[0].idade}
+                        />
+                    </div>
+
+                    <div className="w-full flex items-center">
+                        <div className="bg-zinc-200 w-[120px] p-5 font-semibold">
+                            Cargo:
+                        </div>
+                        <select
+                            className="bg-zinc-100 p-5  w-full"
+                            placeholder={data[0].cargo}
+                            {...register("cargo")}
+                            defaultValue={data[0].cargo}
+                        >
+                            <option value="Administrador">Administrador</option>
+                            <option value="Atendente">Atendente</option>
+                            <option value="Proprietário">Proprietário</option>
+                        </select>
+                    </div>
+
+                    <div className="w-full flex items-center">
+                        <div className="bg-zinc-200 w-[120px] p-5 font-semibold">
+                            Senha:
+                        </div>
+                        <input
+                            className="bg-zinc-100 p-5  w-full"
+                            placeholder=""
+                            type="password"
+                            {...register("senha")}
+                            defaultValue={data[0].senha}
+                        />
+                    </div>
+                    <div className="flex gap-5 w-full">
+                        <Button variant="green" type="submit">
+                            Atualizar
+                        </Button>
+                        {data[0].cargo == "Proprietário" ? (
+                            ""
+                        ) : (
+                            <Button
+                                variant="red"
+                                type="button"
+                                onClick={() => props.deleteBarber(data[0].id)}
+                            >
+                                Excluir
+                            </Button>
+                        )}
+                    </div>
+                </div>
+            ) : (
+                <div>Os dados do barbeiro estão indisponíveis.</div>
             )}
-            
-        </div>
-    </div>
-): <div>Os dados do barbeiro estão indisponíveis.</div>
-            )}
-            
         </motion.form>
     );
 }
