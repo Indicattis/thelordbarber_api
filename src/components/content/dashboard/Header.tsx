@@ -70,6 +70,45 @@ export default function DashboardHeader(props: DashboardHeaderProps) {
             </header>
         );
     }
+    else if (props.cargo == "Administrador") {
+        return (
+            <header className="w-[15%] h-[2000px] bg-white font-sans font-medium uppercase text-sm
+            ">
+                <nav className="w-full flex flex-wrap content-start h-full relative items-stretch">
+                    <div className="h-[80px] flex flex-col justify-center w-[200px] cursor-pointer
+                    max-md:hidden"
+                    onClick={() => window.location.href = '/'}>
+                        <Image src="/img/logoNewBlack.png" alt="" height={0} width={100} />
+                    </div>
+                    
+                    <DashboardHeaderItem
+                        setBg={stage == 1 ? "zinc-100" : "white"}
+                        icon={<IconLayoutDashboard />}
+                        item="Dashboard"
+                        onItemClick={() => changeStage(1)}
+                    />
+                    <DashboardHeaderItem
+                        setBg={stage == 2 ? "zinc-100" : "white"}
+                        icon={<IconCalendarEvent />}
+                        item="Agendas"
+                        onItemClick={() => changeStage(2)}
+                    />
+                    <DashboardHeaderItem
+                        setBg={stage == 3 ? "zinc-100" : "white"}
+                        icon={<IconBuildingSkyscraper />}
+                        item="Funcionários"
+                        onItemClick={() => changeStage(3)}
+                    />
+                    <DashboardHeaderItem
+                        setBg={stage == 4 ? "zinc-100" : "white"}
+                        icon={<IconUsersGroup />}
+                        item="Usuários"
+                        onItemClick={() => changeStage(4)}
+                    />
+                </nav>
+            </header>
+        );
+    }
     else if (props.cargo == "Atendente") {
         return (
             <header className="w-[15%] h-[2000px] bg-white font-sans font-medium uppercase text-sm
@@ -84,6 +123,13 @@ export default function DashboardHeader(props: DashboardHeaderProps) {
                         icon={<IconLayoutDashboard />}
                         item="Dashboard"
                         onItemClick={() => changeStage(1)}
+                    />
+                    
+                    <DashboardHeaderItem
+                        setBg={stage == 2 ? "zinc-100" : "white"}
+                        icon={<IconCalendarEvent />}
+                        item="Agendas"
+                        onItemClick={() => changeStage(2)}
                     />
                 </nav>
             </header>
