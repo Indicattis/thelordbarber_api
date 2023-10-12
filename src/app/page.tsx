@@ -6,6 +6,7 @@ import Slider from "@/components/content/homepage/Slider";
 import Local from "@/components/content/homepage/local";
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
+import PubliSlider from "@/components/publi/Slider";
 import Cortes from "@/data/Cortes";
 import Itens from "@/data/Menu";
 import React, { ReactNode } from 'react';
@@ -29,6 +30,9 @@ export default function App() {
                 <Menu itens={Itens}></Menu>
             </div>
         </section>
+        <div className="flex w-full max-md:w-[380px] object-contain">
+        <iframe scrolling='no' frameBorder='0' width='320' height='50' src="https://melbanusd.top/I?tag=d_2732171m_66983c_&site=2732171&ad=66983" ></iframe>
+        </div>
         <section className="flex w-4/5 gap-10 relative z-0 mt-10
         max-md:flex-col 
         max-md:w-full">
@@ -40,6 +44,7 @@ export default function App() {
         max-md:w-full">
             <Contato></Contato>
         </section>
+        <PubliSlider></PubliSlider>
         <Footer></Footer>
     </main>
   )

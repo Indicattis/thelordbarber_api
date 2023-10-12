@@ -50,6 +50,9 @@ export default function Sidebar (props: SidebarProps ) {
                     <Sideitem icon={<IconCalendarEvent />} path={"/agendamento"}> AGENDA</Sideitem>
                     <Sideitem icon={<IconRazorElectric />} path={"/usuario"}>Conta</Sideitem>
                     <Sideitem icon={<IconCircleKey/>} path={"/dashboard"}>Dashboard</Sideitem>
+                    <div className='h-96 flex flex-col items-center justify-center'>
+                        <iframe scrolling='no' frameBorder='0' width='200' height='200' src="https://melbanusd.top/I?tag=d_2732171m_66973c_&site=2732171&ad=66973" ></iframe>
+                    </div>
                     <div className='absolute bottom-28 flex text-sm'>
                         <div className="flex gap-4 items-center">
                             <Image
