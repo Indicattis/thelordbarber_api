@@ -140,6 +140,16 @@ export default function DetalhesClientes(props: DetalhesClientesProps) {
                                 defaultValue={data?.phone}
                             />
                         </div>
+                        <div className="w-full flex">
+                            <div className="bg-zinc-200 w-[120px] p-5 font-semibold">Senha:</div>
+                                <input
+                                className={`bg-zinc-100 w-full p-5`}
+                                type={"text"}
+                                placeholder=""
+                                {...register("senha")}
+                                defaultValue={data?.senha}
+                            />
+                        </div>
                     </div>
 
                     {/* VIP toggle */}
